@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="120">
+<title>TV Escritório — Miguel CREA-RJ 2026</title>
+<style>
+:root {
+  --azul: #0B3D91;
+  --azul-deep: #03142F;
+  --azul-mid: #082558;
+  --azul-light: #1E5BC6;
+  --dourado: #F2C94C;
+  --dourado-strong: #FFD740;
+  --branco: #FFFFFF;
+  --verde: #4ADE80;
+  --vermelho: #F87171;
+  --amarelo: #FBBF24;
+  --laranja: #FB923C;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body {
+  font-family: 'Segoe UI', -apple-system, sans-serif;
+  background: linear-gradient(135deg, var(--azul-deep) 0%, var(--azul-mid) 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.tv-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 2px solid rgba(242,201,76,0.3); margin-bottom: 24px; flex-shrink: 0; }
+.tv-brand { display: flex; align-items: center; gap: 22px; }
+.tv-logo { width: 86px; height: 86px; background: var(--dourado); color: var(--azul-deep); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 44px; border: 4px solid white; box-shadow: 0 8px 24px rgba(242,201,76,0.4); }
+.tv-brand-text h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+.tv-brand-text p { font-size: 16px; opacity: 0.7; margin-top: 6px; }
+.tv-election { font-size: 14px; opacity: 0.9; margin-top: 6px; color: var(--dourado); }
+.tv-election strong { font-size: 20px; }
+.tv-status { display: flex; gap: 24px; align-items: center; }
+.tv-time { font-size: 48px; font-weight: 800; color: var(--dourado); font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+.tv-date { font-size: 14px; opacity: 0.7; text-align: right; }
+.tv-live { display: inline-flex; align-items: center; gap: 10px; background: rgba(74,222,128,0.15); padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--verde); border: 1px solid rgba(74,222,128,0.4); }
+.live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--verde); animation: blink 1.4s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+.tv-main { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; flex: 1; min-height: 0; }
+.tv-left { display: flex; flex-direction: column; gap: 20px; min-height: 0; }
+.tv-right { display: flex; flex-direction: column; gap: 20px; min-height: 0; }
+.tv-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.tv-metric { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 22px; position: relative; overflow: hidden; }
+.tv-metric::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--dourado); }
+.tv-metric.green::before { background: var(--verde); }
+.tv-metric.blue::before { background: var(--azul-light); }
+.tv-metric.gold::before { background: var(--dourado-strong); }
+.tv-metric-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.2px; }
+.tv-metric-value { font-size: 44px; font-weight: 800; margin-top: 8px; letter-spacing: -1.5px; color: white; }
+.tv-metric-trend { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+.trend-up { background: rgba(74,222,128,0.2); color: var(--verde); }
+.trend-down { background: rgba(248,113,113,0.2); color: var(--vermelho); }
+.trend-neutral { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+.tv-networks { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; flex-shrink: 0; }
+.tv-section-title { font-size: 12px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.tv-section-title::after { content: ''; flex: 1; height: 1px; background: rgba(242,201,76,0.3); }
+.tv-networks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tv-network { background: rgba(0,0,0,0.25); border-radius: 12px; padding: 14px; }
+.tv-network.pending { opacity: 0.5; border: 1px dashed rgba(255,255,255,0.2); }
+.tv-network-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.tv-network-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 13px; }
+.bg-ig { background: linear-gradient(135deg,#f09433,#dc2743,#bc1888); }
+.bg-fb { background: #1877F2; }
+.bg-tt { background: #000; border: 1px solid #444; }
+.bg-li { background: #0A66C2; }
+.tv-network-name { font-size: 14px; font-weight: 700; }
+.tv-network-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.tv-network-row:first-of-type { border-top: none; }
+.tv-network-row span:first-child { color: rgba(255,255,255,0.55); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+.tv-network-row span:last-child { font-weight: 700; color: white; font-size: 15px; }
+.tv-highlight { background: linear-gradient(135deg, rgba(242,201,76,0.18) 0%, rgba(242,201,76,0.06) 100%); border: 1px solid rgba(242,201,76,0.35); border-radius: 16px; padding: 22px; flex-shrink: 0; }
+.tv-highlight-label { font-size: 11px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+.tv-highlight-title { font-size: 20px; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
+.tv-highlight-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+.tv-highlight-stat { font-size: 13px; color: rgba(255,255,255,0.65); }
+.tv-highlight-stat strong { display: block; font-size: 22px; color: var(--dourado); margin-top: 2px; letter-spacing: -0.5px; }
+.tv-alerts { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.tv-alerts-list { display: flex; flex-direction: column; gap: 10px; overflow: hidden; flex: 1; }
+.tv-alert { background: rgba(0,0,0,0.25); border-radius: 12px; padding: 14px; display: flex; gap: 12px; border-left: 4px solid rgba(255,255,255,0.2); }
+.tv-alert.alto { border-left-color: var(--laranja); }
+.tv-alert.medio { border-left-color: var(--amarelo); }
+.tv-alert.baixo { border-left-color: rgba(255,255,255,0.3); }
+.tv-alert-content { flex: 1; }
+.tv-alert-prio { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; }
+.tv-alert.alto .tv-alert-prio { background: var(--laranja); color: white; }
+.tv-alert.medio .tv-alert-prio { background: var(--amarelo); color: var(--azul-deep); }
+.tv-alert.baixo .tv-alert-prio { background: rgba(255,255,255,0.2); color: white; }
+.tv-alert-title { font-size: 14px; font-weight: 700; margin-top: 6px; line-height: 1.3; }
+.tv-alert-meta { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+.tv-chart { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.tv-chart-canvas { flex: 1; position: relative; min-height: 0; }
+.tv-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; margin-top: 16px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.5); flex-shrink: 0; }
+.tv-footer-update { display: flex; align-items: center; gap: 8px; }
+.tv-update-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); animation: blink 2s infinite; }
+</style>
+</head>
+<body>
+
+<div class="tv-header">
+  <div class="tv-brand">
+    <div class="tv-logo">M</div>
+    <div class="tv-brand-text">
+      <h1>MIGUEL FERNÁNDEZ · CREA-RJ 2026</h1>
+      <p>Central de Monitoramento Digital · Últimos 15 dias (01-15/05)</p>
+      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>49 dias</strong></div>
+    </div>
+  </div>
+  <div class="tv-status">
+    <div>
+      <div class="tv-time" id="tvClock">--:--:--</div>
+      <div class="tv-date" id="tvDate">--</div>
+    </div>
+    <div class="tv-live">
+      <span class="live-dot"></span>
+      <span>AO VIVO</span>
+    </div>
+  </div>
+</div>
+
+<div class="tv-main">
+
+  <div class="tv-left">
+
+    <div class="tv-metrics">
+      <div class="tv-metric blue">
+        <div class="tv-metric-label">Seguidores totais</div>
+        <div class="tv-metric-value">17.389</div>
+        <span class="tv-metric-trend trend-up">↑ +88 / 15d</span>
+      </div>
+      <div class="tv-metric gold">
+        <div class="tv-metric-label">Engaj. postagens</div>
+        <div class="tv-metric-value">3.317</div>
+        <span class="tv-metric-trend trend-up">↑ +639% vs período anterior</span>
+      </div>
+      <div class="tv-metric green">
+        <div class="tv-metric-label">Alcance total</div>
+        <div class="tv-metric-value">185K</div>
+        <span class="tv-metric-trend trend-down">↓ -7,74%</span>
+      </div>
+      <div class="tv-metric">
+        <div class="tv-metric-label">Postagens 15d</div>
+        <div class="tv-metric-value">22</div>
+        <span class="tv-metric-trend trend-up">↑ +57% vs período anterior</span>
+      </div>
+    </div>
+
+    <div class="tv-highlight">
+      <div class="tv-highlight-label">🏆 Melhor postagem · 14/05</div>
+      <div class="tv-highlight-title">"A ART não é burocracia. Ela é segurança, responsabilidade..."</div>
+      <div class="tv-highlight-stats">
+        <div class="tv-highlight-stat">Rede<strong>IG Reels</strong></div>
+        <div class="tv-highlight-stat">Views<strong>6.468</strong></div>
+        <div class="tv-highlight-stat">Alcance<strong>4.275</strong></div>
+        <div class="tv-highlight-stat">Interações<strong>532</strong></div>
+        <div class="tv-highlight-stat">Taxa<strong>12,44%</strong></div>
+        <div class="tv-highlight-stat">Compart.<strong>151</strong></div>
+      </div>
+    </div>
+
+    <div class="tv-networks">
+      <div class="tv-section-title">Desempenho por rede · Tempo real</div>
+      <div class="tv-networks-grid">
+        <div class="tv-network">
+          <div class="tv-network-header">
+            <div class="tv-network-badge bg-ig">IG</div>
+            <div class="tv-network-name">Instagram</div>
+          </div>
+          <div class="tv-network-row"><span>Seguidores</span><span>6.573</span></div>
+          <div class="tv-network-row"><span>Variação</span><span>+88</span></div>
+          <div class="tv-network-row"><span>Alcance 30d</span><span>296K</span></div>
+          <div class="tv-network-row"><span>Interações</span><span>5.337</span></div>
+        </div>
+        <div class="tv-network">
+          <div class="tv-network-header">
+            <div class="tv-network-badge bg-li">in</div>
+            <div class="tv-network-name">LinkedIn</div>
+          </div>
+          <div class="tv-network-row"><span>Seguidores</span><span>6.925</span></div>
+          <div class="tv-network-row"><span>Impressões</span><span>5.298</span></div>
+          <div class="tv-network-row"><span>Engajamento</span><span>232</span></div>
+          <div class="tv-network-row"><span>Reações</span><span>207</span></div>
+        </div>
+        <div class="tv-network">
+          <div class="tv-network-header">
+            <div class="tv-network-badge bg-tt">TT</div>
+            <div class="tv-network-name">TikTok</div>
+          </div>
+          <div class="tv-network-row"><span>Seguidores</span><span>3.891</span></div>
+          <div class="tv-network-row"><span>Vídeos 15d</span><span>7</span></div>
+          <div class="tv-network-row"><span>Visualizações</span><span>1.764</span></div>
+          <div class="tv-network-row"><span>Curtidas</span><span>36</span></div>
+        </div>
+        <div class="tv-network pending">
+          <div class="tv-network-header">
+            <div class="tv-network-badge bg-fb">FB</div>
+            <div class="tv-network-name">Facebook</div>
+          </div>
+          <div class="tv-network-row"><span>Status</span><span>—</span></div>
+          <div class="tv-network-row"><span>Ação</span><span style="font-size:11px">Add Reportei</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tv-chart">
+      <div class="tv-section-title">Crescimento de seguidores · 5 semanas</div>
+      <div class="tv-chart-canvas">
+        <canvas id="tvChart" role="img" aria-label="Crescimento de seguidores por rede ao longo de 5 semanas"></canvas>
+      </div>
+    </div>
+
+    <div class="tv-networks" style="flex-shrink:0;">
+      <div class="tv-section-title">🌐 Site · miguelcrea.com (Google Analytics 4)</div>
+      <div class="tv-networks-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="tv-network" style="border-left:3px solid #FB923C;">
+          <div class="tv-network-header"><div class="tv-network-name">Usuários</div></div>
+          <div class="tv-network-row"><span>Únicos (home)</span><span>318</span></div>
+          <div class="tv-network-row"><span>Sessões total</span><span>398</span></div>
+          <div class="tv-network-row"><span>Primeira visita</span><span>165</span></div>
+        </div>
+        <div class="tv-network" style="border-left:3px solid #4ADE80;">
+          <div class="tv-network-header"><div class="tv-network-name">Visualizações</div></div>
+          <div class="tv-network-row"><span>Total páginas</span><span>567</span></div>
+          <div class="tv-network-row"><span>Eventos</span><span>1.698</span></div>
+          <div class="tv-network-row"><span>Engajamento</span><span>207</span></div>
+        </div>
+        <div class="tv-network" style="border-left:3px solid #F2C94C;">
+          <div class="tv-network-header"><div class="tv-network-name">Origem tráfego</div></div>
+          <div class="tv-network-row"><span>Direto</span><span>101</span></div>
+          <div class="tv-network-row"><span>Orgânico</span><span>27</span></div>
+          <div class="tv-network-row"><span>Referral</span><span>9</span></div>
+        </div>
+        <div class="tv-network" style="border-left:3px solid #1E5BC6;">
+          <div class="tv-network-header"><div class="tv-network-name">Tráfego pago</div></div>
+          <div class="tv-network-row"><span>Sessões pagas</span><span>126</span></div>
+          <div class="tv-network-row"><span>Eventos/sessão</span><span>1,12</span></div>
+          <div class="tv-network-row"><span>Conversões</span><span>0</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 11px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;">📄 Top páginas mais acessadas</div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
+          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
+            <span style="font-weight: 700;">/ (home)</span>
+            <span style="color: var(--dourado); text-align: right;"><strong>439</strong> views</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">318 user.</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">11s</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
+            <span style="font-weight: 700;">/projetando-o-crea-do-futuro/</span>
+            <span style="color: var(--dourado); text-align: right;"><strong>63</strong> views</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">21 user.</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">1m06s</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
+            <span style="font-weight: 700;">/quem-sou-eu/</span>
+            <span style="color: var(--dourado); text-align: right;"><strong>38</strong> views</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">19 user.</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">2m29s</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
+            <span style="font-weight: 700;">/nossos-candidatos/</span>
+            <span style="color: var(--dourado); text-align: right;"><strong>26</strong> views</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">17 user.</span>
+            <span style="color: rgba(255,255,255,0.7); text-align: right;">27s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tv-right">
+    <div class="tv-alerts">
+      <div class="tv-section-title">🔔 Insights · Tempo real</div>
+      <div class="tv-alerts-list">
+
+        <div class="tv-alert alto">
+          <div class="tv-alert-content">
+            <span class="tv-alert-prio">Alto</span>
+            <div class="tv-alert-title">Engajamento explodiu +639% no período</div>
+            <div class="tv-alert-meta">3.317 vs 449 do período anterior</div>
+          </div>
+        </div>
+
+        <div class="tv-alert alto">
+          <div class="tv-alert-content">
+            <span class="tv-alert-prio">Alto</span>
+            <div class="tv-alert-title">Reels ART c/ 12,44% engajamento</div>
+            <div class="tv-alert-meta">14/05 · IG · 6.468 views · 151 compart.</div>
+          </div>
+        </div>
+
+        <div class="tv-alert alto">
+          <div class="tv-alert-content">
+            <span class="tv-alert-prio">Alto</span>
+            <div class="tv-alert-title">TikTok com +133% em vídeos publicados</div>
+            <div class="tv-alert-meta">7 vídeos (vs 3 antes) · views +40%</div>
+          </div>
+        </div>
+
+        <div class="tv-alert medio">
+          <div class="tv-alert-content">
+            <span class="tv-alert-prio">Médio</span>
+            <div class="tv-alert-title">LinkedIn caiu -47% em impressões</div>
+            <div class="tv-alert-meta">5.298 vs 10.007 anterior · investigar</div>
+          </div>
+        </div>
+
+        <div class="tv-alert medio">
+          <div class="tv-alert-content">
+            <span class="tv-alert-prio">Médio</span>
+            <div class="tv-alert-title">Alcance total -7,7% vs período anterior</div>
+            <div class="tv-alert-meta">185.557 vs 201.119 · compensar c/ posts</div>
+          </div>
+        </div>
+
+        <div class="tv-alert baixo">
+          <div class="tv-alert-content">
+            <span class="tv-alert-prio">Baixo</span>
+            <div class="tv-alert-title">Postagens +57% (22 vs 14)</div>
+            <div class="tv-alert-meta">Boa frequência, manter ritmo</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="tv-footer">
+  <div class="tv-footer-update">
+    <span class="tv-update-dot"></span>
+    <span>Reportei AO VIVO · Atualização: <strong id="lastUpd">--:--:--</strong></span>
+  </div>
+  <div>Central Estratégica Miguel CREA-RJ 2026 · F11 para tela cheia</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function pad(n) { return String(n).padStart(2,'0'); }
+function updateClock() {
+  const d = new Date();
+  const time = pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds());
+  const meses = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const data = pad(d.getDate()) + ' ' + meses[d.getMonth()] + ' ' + d.getFullYear();
+  document.getElementById('tvClock').textContent = time;
+  document.getElementById('tvDate').textContent = data;
+  document.getElementById('lastUpd').textContent = time;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+const ctx = document.getElementById('tvChart');
+if (ctx) {
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Sem 1','Sem 2','Sem 3','Sem 4','Sem 5 (15/05)'],
+      datasets: [
+        { label: 'Instagram', data: [6362,6431,6489,6529,6573], borderColor: '#FF4081', backgroundColor: 'rgba(255,64,129,0.12)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#FF4081' },
+        { label: 'LinkedIn', data: [6677,6676,6756,6821,6925], borderColor: '#F2C94C', backgroundColor: 'rgba(242,201,76,0.12)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#F2C94C' },
+        { label: 'TikTok', data: [3891,3891,3893,3893,3891], borderColor: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.05)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#FFFFFF' }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } }
+      },
+      scales: {
+        y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } },
+        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
