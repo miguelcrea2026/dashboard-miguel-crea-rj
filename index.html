@@ -121,7 +121,7 @@ body {
     <div class="tv-brand-text">
       <h1>MIGUEL FERNÁNDEZ · CREA-RJ 2026</h1>
       <p>Central de Monitoramento Digital · AO VIVO</p>
-      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>45 dias</strong></div>
+      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>44 dias</strong></div>
     </div>
   </div>
   <div class="tv-status">
@@ -143,36 +143,36 @@ body {
     <div class="tv-metrics">
       <div class="tv-metric blue">
         <div class="tv-metric-label">Seguidores totais (agora)</div>
-        <div class="tv-metric-value">17.620</div>
-        <span class="tv-metric-trend trend-neutral">IG 6.661 · LI 6.950 · TT 4.009</span>
+        <div class="tv-metric-value">17.655</div>
+        <span class="tv-metric-trend trend-neutral">IG 6.694 · LI 6.950 · TT 4.011</span>
       </div>
       <div class="tv-metric gold">
         <div class="tv-metric-label">Engaj. postagens (hoje)</div>
-        <div class="tv-metric-value">167</div>
-        <span class="tv-metric-trend trend-up">↑ +1.987,5% vs ontem (8)</span>
+        <div class="tv-metric-value">95</div>
+        <span class="tv-metric-trend trend-up">↑ +955,56% vs ontem (9)</span>
       </div>
       <div class="tv-metric green">
         <div class="tv-metric-label">Alcance total (hoje)</div>
-        <div class="tv-metric-value">35.578</div>
-        <span class="tv-metric-trend trend-up">↑ +6,82% vs ontem (33.305)</span>
+        <div class="tv-metric-value">17.748</div>
+        <span class="tv-metric-trend trend-down">↓ -50,12% vs ontem (35.578)</span>
       </div>
       <div class="tv-metric">
         <div class="tv-metric-label">Postagens (desde 16/04)</div>
-        <div class="tv-metric-value">39</div>
+        <div class="tv-metric-value">41</div>
         <span class="tv-metric-trend trend-neutral">+2 hoje · campanha em curso</span>
       </div>
     </div>
 
     <div class="tv-highlight">
-      <div class="tv-highlight-label">🏆 Melhor postagem · 08/05 (maior Taxa de Interação)</div>
-      <div class="tv-highlight-title">"Paraty é um dos grandes patrimônios do estado do Rio de Janeiro..."</div>
+      <div class="tv-highlight-label">🏆 Melhor postagem · 20/05 (maior Taxa de Interação)</div>
+      <div class="tv-highlight-title">"São Fidélis foi mais uma parada importante nessa caminhada..."</div>
       <div class="tv-highlight-stats">
         <div class="tv-highlight-stat">Rede<strong>IG Reels</strong></div>
-        <div class="tv-highlight-stat">Views<strong>1.819</strong></div>
-        <div class="tv-highlight-stat">Alcance<strong>1.157</strong></div>
-        <div class="tv-highlight-stat">Interações<strong>217</strong></div>
-        <div class="tv-highlight-stat">Taxa<strong>18,76%</strong></div>
-        <div class="tv-highlight-stat">Compart.<strong>34</strong></div>
+        <div class="tv-highlight-stat">Views<strong>1.072</strong></div>
+        <div class="tv-highlight-stat">Alcance<strong>754</strong></div>
+        <div class="tv-highlight-stat">Interações<strong>94</strong></div>
+        <div class="tv-highlight-stat">Taxa<strong>12,47%</strong></div>
+        <div class="tv-highlight-stat">Compart.<strong>7</strong></div>
       </div>
     </div>
 
@@ -184,10 +184,10 @@ body {
             <div class="tv-network-badge bg-ig">IG</div>
             <div class="tv-network-name">Instagram</div>
           </div>
-          <div class="tv-network-row"><span>Seguidores</span><span>6.661</span></div>
-          <div class="tv-network-row"><span>Variação (hoje)</span><span>+26</span></div>
-          <div class="tv-network-row"><span>Alcance 30d</span><span>325K</span></div>
-          <div class="tv-network-row"><span>Interações (hoje)</span><span>121</span></div>
+          <div class="tv-network-row"><span>Seguidores</span><span>6.694</span></div>
+          <div class="tv-network-row"><span>Variação (hoje)</span><span>+27</span></div>
+          <div class="tv-network-row"><span>Alcance 30d</span><span>20.6K</span></div>
+          <div class="tv-network-row"><span>Interações (hoje)</span><span>309</span></div>
         </div>
         <div class="tv-network">
           <div class="tv-network-header">
@@ -204,10 +204,10 @@ body {
             <div class="tv-network-badge bg-tt">TT</div>
             <div class="tv-network-name">TikTok</div>
           </div>
-          <div class="tv-network-row"><span>Seguidores</span><span>4.009</span></div>
-          <div class="tv-network-row"><span>Vídeos (hoje)</span><span>1</span></div>
-          <div class="tv-network-row"><span>Visualizações</span><span>114</span></div>
-          <div class="tv-network-row"><span>Curtidas</span><span>4</span></div>
+          <div class="tv-network-row"><span>Seguidores</span><span>4.011</span></div>
+          <div class="tv-network-row"><span>Vídeos (hoje)</span><span>5</span></div>
+          <div class="tv-network-row"><span>Visualizações</span><span>1</span></div>
+          <div class="tv-network-row"><span>Curtidas</span><span>5</span></div>
         </div>
         <div class="tv-network pending">
           <div class="tv-network-header">
@@ -385,4 +385,31 @@ function updateClock() {
   document.getElementById('lastUpd').textContent = time;
 }
 updateClock();
-setInterval(updateClock, 10
+setInterval(updateClock, 1000);
+
+const ctx = document.getElementById('tvChart');
+if (ctx) {
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Sem 1','Sem 2','Sem 3','Sem 4','Sem 5','Agora'],
+      datasets: [
+        { label: 'Instagram', data: [6362,6431,6489,6529,6572,6661], borderColor: '#FF4081', backgroundColor: 'rgba(255,64,129,0.12)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#FF4081' },
+        { label: 'LinkedIn', data: [6677,6676,6756,6821,6924,6950], borderColor: '#F2C94C', backgroundColor: 'rgba(242,201,76,0.12)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#F2C94C' },
+        { label: 'TikTok', data: [3891,3891,3893,3893,3891,4009], borderColor: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.05)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#FFFFFF' }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } } },
+      scales: {
+        y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } },
+        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
