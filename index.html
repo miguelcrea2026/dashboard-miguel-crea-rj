@@ -545,14 +545,16 @@ setInterval(updateClock, 1000);
 // Dados reconstruídos do GA4 (Resumo dos relatórios · 25/02 – 25/05/2026)
 // Pontos representativos com picos observados (13–19/abr e 13–15/mai)
 const ga4Labels = [];
+const ga4ShowOnAxis = [];
+const meses3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
 const startDate = new Date(2026, 1, 25); // 25/02/2026
 for (let i = 0; i < 90; i++) {
   const d = new Date(startDate); d.setDate(startDate.getDate() + i);
-  if (d.getDay() === 1 || i === 89) {
-    ga4Labels.push(pad(d.getDate()) + '/' + pad(d.getMonth()+1));
-  } else {
-    ga4Labels.push('');
-  }
+  // Label completo (para tooltip): "07/04 (ter)"
+  const diasSemana = ['dom','seg','ter','qua','qui','sex','sáb'];
+  ga4Labels.push(pad(d.getDate()) + ' ' + meses3[d.getMonth()] + ' (' + diasSemana[d.getDay()] + ')');
+  // Marca se deve aparecer no eixo X (segundas-feiras + último)
+  ga4ShowOnAxis.push(d.getDay() === 1 || i === 89);
 }
 // 90 valores aproximados (new) e (returning) — soma alinhada com 1,2 mil totais
 const newUsers = [3,4,2,5,3,6,4,5,3,2,4,3,5,4,3,2,5,4,6,5,4,3,5,4,3,6,5,4,3,5,8,12,18,28,42,68,95,110,82,55,38,24,18,15,12,10,9,11,14,13,10,8,7,9,11,10,8,7,6,8,12,15,18,22,28,35,42,48,52,45,38,30,25,22,18,16,14,17,20,22,25,28,30,32,28,24,22,20,18,16];
@@ -578,7 +580,13 @@ if (ga4Ctx) {
       },
       scales: {
         y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 10 } }, beginAtZero: true, suggestedMax: 150 },
-        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 10 }, autoSkip: false, maxRotation: 0 } }
+        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 10 }, autoSkip: false, maxRotation: 0,
+          callback: function(value, index) {
+            if (!ga4ShowOnAxis[index]) return '';
+            // No eixo: só dia/mês (resumido) — tooltip terá a versão completa
+            return ga4Labels[index].split(' ').slice(0, 2).join('/');
+          }
+        } }
       }
     }
   });
@@ -598,19 +606,4 @@ if (socialCtx) {
       ]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } },
-        tooltip: { mode: 'index', intersect: false }
-      },
-      scales: {
-        y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } }, beginAtZero: false, suggestedMin: 3500 },
-        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.85)', font: { size: 12, weight: 600 } } }
-      }
-    }
-  });
-}
-</script>
-</body>
-</html>
+      responsive:
