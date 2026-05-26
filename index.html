@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<!-- sync-ts: 2026-05-26 19:55:33 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="refresh" content="120">
@@ -606,4 +605,69 @@ const ttDelta = deltas(ttAbs);
 const deltaLabels = ['Sem 1→2','Sem 2→3','Sem 3→4','Sem 4→5','Sem 5→Agora'];
 
 // Plugin custom para desenhar o valor em cima de cada barra
-const valueOnBarPlugin =
+const valueOnBarPlugin = {
+  id: 'valueOnBar',
+  afterDatasetsDraw(chart) {
+    const ctx = chart.ctx;
+    chart.data.datasets.forEach((ds, di) => {
+      const meta = chart.getDatasetMeta(di);
+      meta.data.forEach((bar, bi) => {
+        const v = ds.data[bi];
+        ctx.save();
+        ctx.fillStyle = ds.backgroundColor === '#FFFFFF' ? '#FFFFFF' : ds.backgroundColor;
+        ctx.font = 'bold 11px Segoe UI, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        const label = (v > 0 ? '+' : '') + v;
+        ctx.fillText(label, bar.x, bar.y - 4);
+        ctx.restore();
+      });
+    });
+  }
+};
+
+const socialCtx = document.getElementById('socialChart');
+if (socialCtx) {
+  new Chart(socialCtx, {
+    type: 'bar',
+    plugins: [valueOnBarPlugin],
+    data: {
+      labels: deltaLabels,
+      datasets: [
+        { label: 'Instagram', data: igDelta, backgroundColor: '#FF4081', borderRadius: 6, borderSkipped: false },
+        { label: 'LinkedIn',  data: liDelta, backgroundColor: '#F2C94C', borderRadius: 6, borderSkipped: false },
+        { label: 'TikTok',    data: ttDelta, backgroundColor: '#FFFFFF', borderRadius: 6, borderSkipped: false }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 24 } }, // espaço para o valor em cima
+      plugins: {
+        legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } },
+        tooltip: {
+          mode: 'index', intersect: false,
+          callbacks: {
+            label: function(ctx) {
+              const v = ctx.parsed.y;
+              const sign = v > 0 ? '+' : '';
+              return ctx.dataset.label + ': ' + sign + v + ' seguidores';
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 }, callback: function(v) { return (v > 0 ? '+' : '') + v; } },
+          beginAtZero: true,
+          title: { display: true, text: 'Novos seguidores', color: 'rgba(255,255,255,0.55)', font: { size: 11 } }
+        },
+        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.85)', font: { size: 12, weight: 600 } } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
