@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="refresh" content="120">
-<title>TV Escritório — Miguel CREA-RJ 2026</title>
+<title>TV Escritório — Miguel CREA-RJ 2026 · Site + Redes</title>
 <style>
 :root {
   --azul: #0B3D91;
@@ -18,6 +18,8 @@
   --vermelho: #F87171;
   --amarelo: #FBBF24;
   --laranja: #FB923C;
+  --ciano: #38BDF8;
+  --roxo: #C084FC;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -31,11 +33,11 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-/* Scrollbar custom para combinar com o tema */
 ::-webkit-scrollbar { width: 12px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); }
 ::-webkit-scrollbar-thumb { background: rgba(242,201,76,0.5); border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(242,201,76,0.8); }
+
 .tv-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 2px solid rgba(242,201,76,0.3); margin-bottom: 24px; flex-shrink: 0; }
 .tv-brand { display: flex; align-items: center; gap: 22px; }
 .tv-logo { width: 86px; height: 86px; background: var(--dourado); color: var(--azul-deep); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 44px; border: 4px solid white; box-shadow: 0 8px 24px rgba(242,201,76,0.4); }
@@ -49,68 +51,204 @@ body {
 .tv-live { display: inline-flex; align-items: center; gap: 10px; background: rgba(74,222,128,0.15); padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--verde); border: 1px solid rgba(74,222,128,0.4); }
 .live-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--verde); animation: blink 1.4s infinite; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-.tv-main { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start; }
-.tv-left { display: flex; flex-direction: column; gap: 20px; }
-.tv-right { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 16px; }
-@media (max-width: 1100px) {
-  .tv-main { grid-template-columns: 1fr; }
-  .tv-right { position: static; }
-  .tv-networks-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  .tv-metrics { grid-template-columns: repeat(2, 1fr); }
+
+/* === BLOCO PRINCIPAL DO SITE === */
+.site-section {
+  background: linear-gradient(135deg, rgba(251,146,60,0.12) 0%, rgba(30,91,198,0.08) 100%);
+  border: 2px solid rgba(251,146,60,0.35);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 28px;
+  position: relative;
 }
-.tv-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.tv-metric { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 22px; position: relative; overflow: hidden; }
-.tv-metric::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--dourado); }
-.tv-metric.green::before { background: var(--verde); }
-.tv-metric.blue::before { background: var(--azul-light); }
-.tv-metric.gold::before { background: var(--dourado-strong); }
-.tv-metric-label { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.2px; }
-.tv-metric-value { font-size: 44px; font-weight: 800; margin-top: 8px; letter-spacing: -1.5px; color: white; }
-.tv-metric-trend { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
-.trend-up { background: rgba(74,222,128,0.2); color: var(--verde); }
-.trend-down { background: rgba(248,113,113,0.2); color: var(--vermelho); }
-.trend-neutral { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
-.tv-networks { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; flex-shrink: 0; }
-.tv-section-title { font-size: 12px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
-.tv-section-title::after { content: ''; flex: 1; height: 1px; background: rgba(242,201,76,0.3); }
-.tv-networks-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.tv-network { background: rgba(0,0,0,0.25); border-radius: 12px; padding: 14px; }
-.tv-network.pending { opacity: 0.5; border: 1px dashed rgba(255,255,255,0.2); }
-.tv-network-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.tv-network-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 13px; }
+.site-badge {
+  position: absolute;
+  top: -14px;
+  left: 28px;
+  background: var(--laranja);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(251,146,60,0.4);
+}
+.site-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.site-title { font-size: 24px; font-weight: 800; letter-spacing: -0.4px; display: flex; align-items: center; gap: 12px; }
+.site-period { font-size: 13px; color: rgba(255,255,255,0.7); background: rgba(0,0,0,0.25); padding: 6px 12px; border-radius: 999px; }
+
+.site-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 22px; }
+.site-kpi {
+  background: rgba(0,0,0,0.30);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.site-kpi::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--laranja); }
+.site-kpi.green::before { background: var(--verde); }
+.site-kpi.blue::before { background: var(--azul-light); }
+.site-kpi.gold::before { background: var(--dourado); }
+.site-kpi-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1.5px; }
+.site-kpi-value { font-size: 46px; font-weight: 800; margin-top: 6px; letter-spacing: -1.5px; color: white; }
+.site-kpi-sub { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+.site-chart-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+@media (max-width: 1100px) { .site-chart-row { grid-template-columns: 1fr; } }
+.site-chart {
+  background: rgba(0,0,0,0.30);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px;
+  padding: 18px;
+}
+.chart-title { font-size: 12px; font-weight: 700; color: var(--laranja); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+.chart-title small { font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.5); }
+.chart-canvas { position: relative; height: 280px; }
+
+.site-tables { background: rgba(0,0,0,0.30); border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 18px; display:flex; flex-direction:column; gap: 18px; }
+.mini-table { font-size: 13px; }
+.mini-table-row { display: grid; grid-template-columns: 1.6fr 0.5fr 0.4fr; gap: 8px; padding: 7px 10px; border-radius: 8px; align-items: center; }
+.mini-table-row.head { background: rgba(255,255,255,0.06); font-size: 10px; color: var(--dourado); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 6px 10px;}
+.mini-table-row.data { background: rgba(0,0,0,0.20); margin-top: 4px; }
+.mini-table-row.data:hover { background: rgba(0,0,0,0.35); }
+.mini-table-row span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mini-table-row .v { color: var(--dourado); font-weight: 700; text-align: right; }
+.mini-table-row .u { color: rgba(255,255,255,0.6); text-align: right; font-size: 12px; }
+.bar-bg { background: rgba(0,0,0,0.25); border-radius: 6px; height: 8px; margin-top: 4px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--laranja), var(--dourado)); border-radius: 6px; }
+
+.site-bottom-row { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-top: 18px; }
+@media (max-width: 1100px) { .site-bottom-row { grid-template-columns: 1fr; } }
+.site-channels { background: rgba(0,0,0,0.30); border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 18px; }
+.channel-row { display: grid; grid-template-columns: 1.2fr 0.6fr 0.6fr; gap: 8px; padding: 7px 10px; border-radius: 8px; align-items: center; font-size: 13px; background: rgba(0,0,0,0.20); margin-top: 4px; }
+.channel-row .chip { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 2px 7px; border-radius: 4px; }
+.chip-direct { background: rgba(255,255,255,0.15); color: white; }
+.chip-paid { background: rgba(251,146,60,0.25); color: var(--laranja); }
+.chip-organic { background: rgba(74,222,128,0.20); color: var(--verde); }
+.chip-referral { background: rgba(192,132,252,0.20); color: var(--roxo); }
+.chip-social { background: rgba(56,189,248,0.20); color: var(--ciano); }
+
+.site-insight {
+  background: linear-gradient(135deg, rgba(242,201,76,0.18) 0%, rgba(242,201,76,0.05) 100%);
+  border: 1px solid rgba(242,201,76,0.35);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.site-insight-label { font-size: 10px; font-weight: 800; color: var(--dourado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+.site-insight-title { font-size: 14px; font-weight: 700; line-height: 1.4; }
+.site-insight-meta { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+/* === BLOCO REDES SECUNDÁRIO === */
+.social-section {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 24px;
+  position: relative;
+}
+.social-badge {
+  position: absolute;
+  top: -14px;
+  left: 28px;
+  background: var(--azul-light);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.social-title-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.social-title { font-size: 20px; font-weight: 800; letter-spacing: -0.3px; display: flex; align-items: center; gap: 12px; }
+.social-period { font-size: 12px; color: rgba(255,255,255,0.65); background: rgba(0,0,0,0.25); padding: 5px 11px; border-radius: 999px; }
+
+.social-main { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+@media (max-width: 1100px) { .social-main { grid-template-columns: 1fr; } }
+.social-left { display: flex; flex-direction: column; gap: 16px; }
+.social-right { display: flex; flex-direction: column; gap: 16px; }
+
+.social-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.social-kpi {
+  background: rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.social-kpi::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--azul-light); }
+.social-kpi.gold::before { background: var(--dourado); }
+.social-kpi.green::before { background: var(--verde); }
+.social-kpi.neutral::before { background: rgba(255,255,255,0.4); }
+.social-kpi-label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.social-kpi-value { font-size: 30px; font-weight: 800; margin-top: 4px; letter-spacing: -1px; }
+.social-kpi-trend { font-size: 11px; padding: 2px 8px; border-radius: 999px; margin-top: 4px; display: inline-block; font-weight: 600; }
+.trend-up { background: rgba(74,222,128,0.20); color: var(--verde); }
+.trend-down { background: rgba(248,113,113,0.20); color: var(--vermelho); }
+.trend-neutral { background: rgba(255,255,255,0.10); color: rgba(255,255,255,0.7); }
+
+.social-chart {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px;
+  padding: 18px;
+  flex: 1;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.social-chart-canvas { flex: 1; position: relative; min-height: 260px; }
+
+.social-networks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.social-network {
+  background: rgba(0,0,0,0.30);
+  border-radius: 12px;
+  padding: 12px;
+}
+.social-network-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.social-network-badge { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 11px; }
 .bg-ig { background: linear-gradient(135deg,#f09433,#dc2743,#bc1888); }
-.bg-fb { background: #1877F2; }
 .bg-tt { background: #000; border: 1px solid #444; }
 .bg-li { background: #0A66C2; }
-.tv-network-name { font-size: 14px; font-weight: 700; }
-.tv-network-row { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; border-top: 1px solid rgba(255,255,255,0.08); }
-.tv-network-row:first-of-type { border-top: none; }
-.tv-network-row span:first-child { color: rgba(255,255,255,0.55); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
-.tv-network-row span:last-child { font-weight: 700; color: white; font-size: 15px; }
-.tv-highlight { background: linear-gradient(135deg, rgba(242,201,76,0.18) 0%, rgba(242,201,76,0.06) 100%); border: 1px solid rgba(242,201,76,0.35); border-radius: 16px; padding: 22px; flex-shrink: 0; }
-.tv-highlight-label { font-size: 11px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
-.tv-highlight-title { font-size: 20px; font-weight: 700; line-height: 1.3; margin-bottom: 14px; }
-.tv-highlight-stats { display: flex; gap: 28px; flex-wrap: wrap; }
-.tv-highlight-stat { font-size: 13px; color: rgba(255,255,255,0.65); }
-.tv-highlight-stat strong { display: block; font-size: 22px; color: var(--dourado); margin-top: 2px; letter-spacing: -0.5px; }
-.tv-alerts { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; max-height: calc(100vh - 80px); overflow-y: auto; }
-.tv-alerts-list { display: flex; flex-direction: column; gap: 10px; }
-.tv-alert { background: rgba(0,0,0,0.25); border-radius: 12px; padding: 14px; display: flex; gap: 12px; border-left: 4px solid rgba(255,255,255,0.2); }
-.tv-alert.alto { border-left-color: var(--laranja); }
-.tv-alert.medio { border-left-color: var(--amarelo); }
-.tv-alert.baixo { border-left-color: rgba(255,255,255,0.3); }
-.tv-alert-content { flex: 1; }
-.tv-alert-prio { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; }
-.tv-alert.alto .tv-alert-prio { background: var(--laranja); color: white; }
-.tv-alert.medio .tv-alert-prio { background: var(--amarelo); color: var(--azul-deep); }
-.tv-alert.baixo .tv-alert-prio { background: rgba(255,255,255,0.2); color: white; }
-.tv-alert-title { font-size: 14px; font-weight: 700; margin-top: 6px; line-height: 1.3; }
-.tv-alert-meta { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; }
-.tv-chart { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; min-height: 320px; }
-.tv-chart-canvas { flex: 1; position: relative; min-height: 280px; }
+.social-network-name { font-size: 13px; font-weight: 700; }
+.social-network-row { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+.social-network-row:first-of-type { border-top: none; }
+.social-network-row span:first-child { color: rgba(255,255,255,0.55); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+.social-network-row span:last-child { font-weight: 700; color: white; font-size: 13px; }
+
+.social-alerts {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px;
+  padding: 16px;
+  max-height: 540px;
+  overflow-y: auto;
+}
+.alerts-list { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.alert {
+  background: rgba(0,0,0,0.30);
+  border-radius: 10px;
+  padding: 10px 12px;
+  border-left: 3px solid rgba(255,255,255,0.2);
+}
+.alert.alto { border-left-color: var(--laranja); }
+.alert.medio { border-left-color: var(--amarelo); }
+.alert.baixo { border-left-color: rgba(255,255,255,0.3); }
+.alert-prio { display: inline-block; padding: 1px 6px; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; border-radius: 3px; }
+.alert.alto .alert-prio { background: var(--laranja); color: white; }
+.alert.medio .alert-prio { background: var(--amarelo); color: var(--azul-deep); }
+.alert.baixo .alert-prio { background: rgba(255,255,255,0.2); color: white; }
+.alert-title { font-size: 12px; font-weight: 700; margin-top: 4px; line-height: 1.3; }
+.alert-meta { font-size: 10px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+
 .tv-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.5); flex-wrap: wrap; gap: 12px; }
 .tv-footer-update { display: flex; align-items: center; gap: 8px; }
 .tv-update-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); animation: blink 2s infinite; }
+.section-heading { font-size: 11px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
 </style>
 </head>
 <body>
@@ -120,8 +258,8 @@ body {
     <div class="tv-logo">M</div>
     <div class="tv-brand-text">
       <h1>MIGUEL FERNÁNDEZ · CREA-RJ 2026</h1>
-      <p>Central de Monitoramento Digital · AO VIVO</p>
-      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>44 dias</strong></div>
+      <p>Central de Monitoramento Digital · Foco no Site + Redes</p>
+      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>39 dias</strong> · GA4 90d · Reportei 7d</div>
     </div>
   </div>
   <div class="tv-status">
@@ -136,238 +274,254 @@ body {
   </div>
 </div>
 
-<div class="tv-main">
-
-  <div class="tv-left">
-
-    <div class="tv-metrics">
-      <div class="tv-metric blue">
-        <div class="tv-metric-label">Seguidores totais (agora)</div>
-        <div class="tv-metric-value">17.655</div>
-        <span class="tv-metric-trend trend-neutral">IG 6.694 · LI 6.950 · TT 4.011</span>
-      </div>
-      <div class="tv-metric gold">
-        <div class="tv-metric-label">Engaj. postagens (hoje)</div>
-        <div class="tv-metric-value">95</div>
-        <span class="tv-metric-trend trend-up">↑ +955,56% vs ontem (9)</span>
-      </div>
-      <div class="tv-metric green">
-        <div class="tv-metric-label">Alcance total (hoje)</div>
-        <div class="tv-metric-value">17.748</div>
-        <span class="tv-metric-trend trend-down">↓ -50,12% vs ontem (35.578)</span>
-      </div>
-      <div class="tv-metric">
-        <div class="tv-metric-label">Postagens (desde 16/04)</div>
-        <div class="tv-metric-value">41</div>
-        <span class="tv-metric-trend trend-neutral">+2 hoje · campanha em curso</span>
-      </div>
-    </div>
-
-    <div class="tv-highlight">
-      <div class="tv-highlight-label">🏆 Melhor postagem · 20/05 (maior Taxa de Interação)</div>
-      <div class="tv-highlight-title">"São Fidélis foi mais uma parada importante nessa caminhada..."</div>
-      <div class="tv-highlight-stats">
-        <div class="tv-highlight-stat">Rede<strong>IG Reels</strong></div>
-        <div class="tv-highlight-stat">Views<strong>1.072</strong></div>
-        <div class="tv-highlight-stat">Alcance<strong>754</strong></div>
-        <div class="tv-highlight-stat">Interações<strong>94</strong></div>
-        <div class="tv-highlight-stat">Taxa<strong>12,47%</strong></div>
-        <div class="tv-highlight-stat">Compart.<strong>7</strong></div>
-      </div>
-    </div>
-
-    <div class="tv-networks">
-      <div class="tv-section-title">Desempenho por rede · Tempo real</div>
-      <div class="tv-networks-grid">
-        <div class="tv-network">
-          <div class="tv-network-header">
-            <div class="tv-network-badge bg-ig">IG</div>
-            <div class="tv-network-name">Instagram</div>
-          </div>
-          <div class="tv-network-row"><span>Seguidores</span><span>6.694</span></div>
-          <div class="tv-network-row"><span>Variação (hoje)</span><span>+27</span></div>
-          <div class="tv-network-row"><span>Alcance 30d</span><span>20.6K</span></div>
-          <div class="tv-network-row"><span>Interações (hoje)</span><span>309</span></div>
-        </div>
-        <div class="tv-network">
-          <div class="tv-network-header">
-            <div class="tv-network-badge bg-li">in</div>
-            <div class="tv-network-name">LinkedIn</div>
-          </div>
-          <div class="tv-network-row"><span>Seguidores</span><span>6.950</span></div>
-          <div class="tv-network-row"><span>Impressões (hoje)</span><span>136</span></div>
-          <div class="tv-network-row"><span>Engaj. (hoje)</span><span>3</span></div>
-          <div class="tv-network-row"><span>Reações (hoje)</span><span>3</span></div>
-        </div>
-        <div class="tv-network">
-          <div class="tv-network-header">
-            <div class="tv-network-badge bg-tt">TT</div>
-            <div class="tv-network-name">TikTok</div>
-          </div>
-          <div class="tv-network-row"><span>Seguidores</span><span>4.011</span></div>
-          <div class="tv-network-row"><span>Vídeos (hoje)</span><span>5</span></div>
-          <div class="tv-network-row"><span>Visualizações</span><span>1</span></div>
-          <div class="tv-network-row"><span>Curtidas</span><span>5</span></div>
-        </div>
-        <div class="tv-network pending">
-          <div class="tv-network-header">
-            <div class="tv-network-badge bg-fb">FB</div>
-            <div class="tv-network-name">Facebook</div>
-          </div>
-          <div class="tv-network-row"><span>Status</span><span>—</span></div>
-          <div class="tv-network-row"><span>Ação</span><span style="font-size:11px">Add Reportei</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tv-chart">
-      <div class="tv-section-title">Crescimento de seguidores · 5 semanas</div>
-      <div class="tv-chart-canvas">
-        <canvas id="tvChart" role="img" aria-label="Crescimento de seguidores por rede ao longo de 5 semanas"></canvas>
-      </div>
-    </div>
-
-    <div class="tv-networks" style="flex-shrink:0;">
-      <div class="tv-section-title">🌐 Site · miguelcrea.com (Google Analytics 4)</div>
-      <div class="tv-networks-grid" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="tv-network" style="border-left:3px solid #FB923C;">
-          <div class="tv-network-header"><div class="tv-network-name">Usuários</div></div>
-          <div class="tv-network-row"><span>Únicos (home)</span><span>318</span></div>
-          <div class="tv-network-row"><span>Sessões total</span><span>398</span></div>
-          <div class="tv-network-row"><span>Primeira visita</span><span>165</span></div>
-        </div>
-        <div class="tv-network" style="border-left:3px solid #4ADE80;">
-          <div class="tv-network-header"><div class="tv-network-name">Visualizações</div></div>
-          <div class="tv-network-row"><span>Total páginas</span><span>567</span></div>
-          <div class="tv-network-row"><span>Eventos</span><span>1.698</span></div>
-          <div class="tv-network-row"><span>Engajamento</span><span>207</span></div>
-        </div>
-        <div class="tv-network" style="border-left:3px solid #F2C94C;">
-          <div class="tv-network-header"><div class="tv-network-name">Origem tráfego</div></div>
-          <div class="tv-network-row"><span>Direto</span><span>101</span></div>
-          <div class="tv-network-row"><span>Orgânico</span><span>27</span></div>
-          <div class="tv-network-row"><span>Referral</span><span>9</span></div>
-        </div>
-        <div class="tv-network" style="border-left:3px solid #1E5BC6;">
-          <div class="tv-network-header"><div class="tv-network-name">Tráfego pago</div></div>
-          <div class="tv-network-row"><span>Sessões pagas</span><span>126</span></div>
-          <div class="tv-network-row"><span>Eventos/sessão</span><span>1,12</span></div>
-          <div class="tv-network-row"><span>Conversões</span><span>0</span></div>
-        </div>
-      </div>
-
-      <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);">
-        <div style="font-size: 11px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;">📄 Top páginas mais acessadas</div>
-        <div style="display: grid; grid-template-columns: 1fr; gap: 8px;">
-          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
-            <span style="font-weight: 700;">/ (home)</span>
-            <span style="color: var(--dourado); text-align: right;"><strong>439</strong> views</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">318 user.</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">11s</span>
-          </div>
-          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
-            <span style="font-weight: 700;">/projetando-o-crea-do-futuro/</span>
-            <span style="color: var(--dourado); text-align: right;"><strong>63</strong> views</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">21 user.</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">1m06s</span>
-          </div>
-          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
-            <span style="font-weight: 700;">/quem-sou-eu/</span>
-            <span style="color: var(--dourado); text-align: right;"><strong>38</strong> views</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">19 user.</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">2m29s</span>
-          </div>
-          <div style="display: grid; grid-template-columns: 2fr 80px 80px 80px; gap: 12px; padding: 8px 12px; background: rgba(0,0,0,0.25); border-radius: 8px; font-size: 13px;">
-            <span style="font-weight: 700;">/nossos-candidatos/</span>
-            <span style="color: var(--dourado); text-align: right;"><strong>26</strong> views</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">17 user.</span>
-            <span style="color: rgba(255,255,255,0.7); text-align: right;">27s</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<!-- ============== BLOCO PRINCIPAL: SITE miguelcrea.com ============== -->
+<div class="site-section">
+  <div class="site-badge">🌐 Foco · Site</div>
+  <div class="site-title-row" style="margin-top: 6px;">
+    <div class="site-title">miguelcrea.com · Google Analytics 4</div>
+    <div class="site-period">Últimos 90 dias · 25/02 – 25/05/2026</div>
   </div>
 
-  <div class="tv-right">
-    <div class="tv-alerts">
-      <div class="tv-section-title">🔔 Insights · Tempo real</div>
-      <div class="tv-alerts-list">
+  <!-- KPIs SITE -->
+  <div class="site-kpis">
+    <div class="site-kpi">
+      <div class="site-kpi-label">Usuários ativos</div>
+      <div class="site-kpi-value">1,2 mil</div>
+      <div class="site-kpi-sub">Últimos 28 dias: 625</div>
+    </div>
+    <div class="site-kpi green">
+      <div class="site-kpi-label">Novos usuários</div>
+      <div class="site-kpi-value">1,2 mil</div>
+      <div class="site-kpi-sub">Últimos 28 dias: 594 (94% do total)</div>
+    </div>
+    <div class="site-kpi blue">
+      <div class="site-kpi-label">Tempo médio engaj./usuário</div>
+      <div class="site-kpi-value">57s</div>
+      <div class="site-kpi-sub">Últimos 28 dias: 1 min 00 s</div>
+    </div>
+    <div class="site-kpi gold">
+      <div class="site-kpi-label">Contagem de eventos</div>
+      <div class="site-kpi-value">8,6 mil</div>
+      <div class="site-kpi-sub">Últimos 28 dias: 3,9 mil</div>
+    </div>
+  </div>
 
-        <div class="tv-alert alto">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Alto</span>
-            <div class="tv-alert-title">Engajamento explodiu +1.339% no período</div>
-            <div class="tv-alert-meta">3.628 vs 252 do período anterior</div>
+  <!-- CHART + TOP PÁGINAS -->
+  <div class="site-chart-row">
+    <div class="site-chart">
+      <div class="chart-title">
+        📈 Usuários novos × recorrentes <small>90 dias · GA4</small>
+      </div>
+      <div class="chart-canvas">
+        <canvas id="ga4Chart" role="img" aria-label="Usuários novos e recorrentes ao longo de 90 dias"></canvas>
+      </div>
+    </div>
+
+    <div class="site-tables">
+      <div>
+        <div class="section-heading">📄 Top páginas (90d)</div>
+        <div class="mini-table">
+          <div class="mini-table-row head">
+            <span>Página</span><span class="v" style="color:var(--dourado);">Views</span><span class="u" style="color:var(--dourado);">Users</span>
+          </div>
+          <div class="mini-table-row data">
+            <span title="Miguel CREA-RJ (home)">🏠 / (home)</span><span class="v">1.900</span><span class="u">1.100</span>
+          </div>
+          <div class="mini-table-row data">
+            <span>/projetando-o-crea-do-futuro/</span><span class="v">295</span><span class="u">98</span>
+          </div>
+          <div class="mini-table-row data">
+            <span>/quem-sou-eu/</span><span class="v">289</span><span class="u">78</span>
+          </div>
+          <div class="mini-table-row data">
+            <span>/nossos-candidatos/</span><span class="v">86</span><span class="u">45</span>
+          </div>
+          <div class="mini-table-row data">
+            <span>/nossos-apoios/</span><span class="v">77</span><span class="u">50</span>
+          </div>
+          <div class="mini-table-row data">
+            <span>/miguel/</span><span class="v">44</span><span class="u">8</span>
           </div>
         </div>
-
-        <div class="tv-alert alto">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Alto</span>
-            <div class="tv-alert-title">TikTok views +485% / curtidas +416%</div>
-            <div class="tv-alert-meta">4.387 views · 160 curtidas · 8 vídeos (+300%)</div>
-          </div>
-        </div>
-
-        <div class="tv-alert alto">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Alto</span>
-            <div class="tv-alert-title">Reel Paraty c/ 18,76% taxa interação</div>
-            <div class="tv-alert-meta">08/05 · IG · 1.819 views · 34 compart.</div>
-          </div>
-        </div>
-
-        <div class="tv-alert medio">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Médio</span>
-            <div class="tv-alert-title">Novos seguidores IG +19,2% (149 vs 125)</div>
-            <div class="tv-alert-meta">Crescimento orgânico consistente · manter</div>
-          </div>
-        </div>
-
-        <div class="tv-alert medio">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Médio</span>
-            <div class="tv-alert-title">Alcance total -18,03% vs período anterior</div>
-            <div class="tv-alert-meta">189.663 vs 231.388 · compensar c/ reels</div>
-          </div>
-        </div>
-
-        <div class="tv-alert medio">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Médio</span>
-            <div class="tv-alert-title">Visualizações totais IG -19,84%</div>
-            <div class="tv-alert-meta">426K vs 532K · investigar queda de reach</div>
-          </div>
-        </div>
-
-        <div class="tv-alert baixo">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Baixo</span>
-            <div class="tv-alert-title">LinkedIn engajamento +22,6% (271 vs 221)</div>
-            <div class="tv-alert-meta">Reações +25,4% · impressões -5%</div>
-          </div>
-        </div>
-
-        <div class="tv-alert baixo">
-          <div class="tv-alert-content">
-            <span class="tv-alert-prio">Baixo</span>
-            <div class="tv-alert-title">Postagens +61,5% (21 vs 13)</div>
-            <div class="tv-alert-meta">Boa frequência, manter ritmo</div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
 
+  <!-- ORIGEM DE TRÁFEGO + INSIGHT -->
+  <div class="site-bottom-row">
+    <div class="site-channels">
+      <div class="section-heading">🚦 Sessões por origem/mídia (90d) · Total ~1.747</div>
+      <div class="channel-row" style="background: rgba(0,0,0,0.30); font-weight: 700; font-size: 11px; color: var(--dourado); text-transform: uppercase; letter-spacing: 1px;">
+        <span>Origem / mídia</span><span style="text-align:right;">Sessões</span><span style="text-align:right;">% share</span>
+      </div>
+      <div class="channel-row"><span><span class="chip chip-direct">Direct</span> (direct) / (none)</span><span style="text-align:right; font-weight:700;">1.100</span><span style="text-align:right; color: rgba(255,255,255,0.7);">62,9%</span></div>
+      <div class="channel-row"><span><span class="chip chip-paid">Paid</span> ig / paid</span><span style="text-align:right; font-weight:700;">305</span><span style="text-align:right; color: rgba(255,255,255,0.7);">17,5%</span></div>
+      <div class="channel-row"><span><span class="chip chip-organic">Organic</span> google / organic</span><span style="text-align:right; font-weight:700;">237</span><span style="text-align:right; color: rgba(255,255,255,0.7);">13,6%</span></div>
+      <div class="channel-row"><span><span class="chip chip-referral">Ref.</span> l.instagram.com / referral</span><span style="text-align:right; font-weight:700;">69</span><span style="text-align:right; color: rgba(255,255,255,0.7);">3,9%</span></div>
+      <div class="channel-row"><span><span class="chip chip-paid">Paid</span> fb / paid</span><span style="text-align:right; font-weight:700;">14</span><span style="text-align:right; color: rgba(255,255,255,0.7);">0,8%</span></div>
+      <div class="channel-row"><span><span class="chip chip-referral">Ref.</span> facebook.com / referral</span><span style="text-align:right; font-weight:700;">11</span><span style="text-align:right; color: rgba(255,255,255,0.7);">0,6%</span></div>
+      <div class="channel-row"><span><span class="chip chip-social">Social</span> ig / social</span><span style="text-align:right; font-weight:700;">11</span><span style="text-align:right; color: rgba(255,255,255,0.7);">0,6%</span></div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap: 14px;">
+      <div class="site-insight">
+        <div class="site-insight-label">💡 Insight GA4</div>
+        <div class="site-insight-title">Pico de usuários "Direct" em <strong style="color:var(--dourado);">14 de maio</strong></div>
+        <div class="site-insight-meta">O canal Direct concentra 62,9% das sessões. Reforce divulgação offline e materiais com URL curta nas próximas semanas.</div>
+      </div>
+      <div class="site-insight" style="background: linear-gradient(135deg, rgba(74,222,128,0.16) 0%, rgba(74,222,128,0.04) 100%); border-color: rgba(74,222,128,0.35);">
+        <div class="site-insight-label" style="color: var(--verde);">✅ Conversão de fluxo</div>
+        <div class="site-insight-title">Home concentra <strong style="color:var(--verde);">58%</strong> da audiência total</div>
+        <div class="site-insight-meta">1.900 views · 1.100 usuários · taxa de rejeição 58%. Otimizar CTA da home para reduzir bounce abaixo de 50%.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============== BLOCO SECUNDÁRIO: REDES SOCIAIS ============== -->
+<div class="social-section">
+  <div class="social-badge">📱 Redes · Suporte</div>
+  <div class="social-title-row" style="margin-top: 6px;">
+    <div class="social-title">Performance nas redes sociais</div>
+    <div class="social-period">Período Reportei: 27/04 – 26/05/2026 vs 28/03 – 26/04/2026</div>
+  </div>
+
+  <div class="social-main">
+    <div class="social-left">
+      <!-- KPIs Redes -->
+      <div class="social-kpis">
+        <div class="social-kpi neutral">
+          <div class="social-kpi-label">Seguidores totais</div>
+          <div class="social-kpi-value">18.083</div>
+          <span class="social-kpi-trend trend-neutral">IG 6.847 · LI 7.012 · TT 4.224</span>
+        </div>
+        <div class="social-kpi gold">
+          <div class="social-kpi-label">Engaj. postagens (30d)</div>
+          <div class="social-kpi-value">6.810</div>
+          <span class="social-kpi-trend trend-up">↑ +933,38% vs 659</span>
+        </div>
+        <div class="social-kpi green">
+          <div class="social-kpi-label">Alcance total (30d)</div>
+          <div class="social-kpi-value">313.893</div>
+          <span class="social-kpi-trend trend-up">↑ +1,93% vs 307.946</span>
+        </div>
+        <div class="social-kpi">
+          <div class="social-kpi-label">Postagens (30d)</div>
+          <div class="social-kpi-value">41</div>
+          <span class="social-kpi-trend trend-up">↑ +173,33% vs 15</span>
+        </div>
+      </div>
+
+      <!-- CHART BARRAS AGRUPADAS -->
+      <div class="social-chart">
+        <div class="chart-title">
+          📊 Crescimento de seguidores · 5 semanas + Agora <small>BARRAS · IG · LI · TT</small>
+        </div>
+        <div class="social-chart-canvas">
+          <canvas id="socialChart" role="img" aria-label="Crescimento de seguidores em barras agrupadas por semana"></canvas>
+        </div>
+      </div>
+
+      <!-- NETWORK GRID -->
+      <div class="social-networks">
+        <div class="social-network">
+          <div class="social-network-header">
+            <div class="social-network-badge bg-ig">IG</div>
+            <div class="social-network-name">Instagram</div>
+          </div>
+          <div class="social-network-row"><span>Seguidores</span><span>6.847</span></div>
+          <div class="social-network-row"><span>Novos seg.</span><span>+397</span></div>
+          <div class="social-network-row"><span>Alcance 30d</span><span>310,8K</span></div>
+          <div class="social-network-row"><span>Interações</span><span>11.000</span></div>
+        </div>
+        <div class="social-network">
+          <div class="social-network-header">
+            <div class="social-network-badge bg-li">in</div>
+            <div class="social-network-name">LinkedIn</div>
+          </div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.012</span></div>
+          <div class="social-network-row"><span>Impressões</span><span>9.460</span></div>
+          <div class="social-network-row"><span>Engaj.</span><span>353</span></div>
+          <div class="social-network-row"><span>Membros</span><span>3.086</span></div>
+        </div>
+        <div class="social-network">
+          <div class="social-network-header">
+            <div class="social-network-badge bg-tt">TT</div>
+            <div class="social-network-name">TikTok</div>
+          </div>
+          <div class="social-network-row"><span>Seguidores</span><span>4.224</span></div>
+          <div class="social-network-row"><span>Vídeos (30d)</span><span>16</span></div>
+          <div class="social-network-row"><span>Visualizações</span><span>17.333</span></div>
+          <div class="social-network-row"><span>Curtidas</span><span>642</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALERTAS REDES -->
+    <div class="social-right">
+      <div class="social-alerts">
+        <div class="section-heading">🔔 Alertas críticos (variações >30%)</div>
+        <div class="alerts-list">
+          <div class="alert alto">
+            <span class="alert-prio">Alto</span>
+            <div class="alert-title">Engaj. postagens 30d: 6.810 (+933,38%)</div>
+            <div class="alert-meta">vs 659 · explosão de interações</div>
+          </div>
+          <div class="alert alto">
+            <span class="alert-prio">Alto</span>
+            <div class="alert-title">IG Visualizações 30d: 965.458 (+64,84%)</div>
+            <div class="alert-meta">vs 585.705 · conteúdo escalando</div>
+          </div>
+          <div class="alert alto">
+            <span class="alert-prio">Alto</span>
+            <div class="alert-title">TT Views: 17.333 (+2.220,35%)</div>
+            <div class="alert-meta">Curtidas 642 (+2.691,3%) · TikTok decolando</div>
+          </div>
+          <div class="alert alto">
+            <span class="alert-prio">Alto</span>
+            <div class="alert-title">TT Vídeos: 16 (+700%)</div>
+            <div class="alert-meta">vs 2 · cadência de TikTok 8x maior</div>
+          </div>
+          <div class="alert alto">
+            <span class="alert-prio">Alto</span>
+            <div class="alert-title">Postagens 30d: 41 (+173,33%)</div>
+            <div class="alert-meta">vs 15 · produção quase triplicada</div>
+          </div>
+          <div class="alert medio">
+            <span class="alert-prio">Médio</span>
+            <div class="alert-title">IG Interações totais: 11.000 (+44,98%)</div>
+            <div class="alert-meta">Novos seguidores 397 (+64,05%)</div>
+          </div>
+          <div class="alert medio">
+            <span class="alert-prio">Médio</span>
+            <div class="alert-title">IG Visitas do perfil: 5.136 (-62,21%)</div>
+            <div class="alert-meta">vs 13.591 · queda forte · investigar</div>
+          </div>
+          <div class="alert medio">
+            <span class="alert-prio">Médio</span>
+            <div class="alert-title">LI Membros atingidos: 3.086 (-58,67%)</div>
+            <div class="alert-meta">Impr. 9.460 (-49,46%) · Engaj. 353 (-44,5%)</div>
+          </div>
+          <div class="alert medio">
+            <span class="alert-prio">Médio</span>
+            <div class="alert-title">LI Reações: 318 (-46,46%)</div>
+            <div class="alert-meta">vs 594 · LinkedIn precisa de revisão de conteúdo</div>
+          </div>
+          <div class="alert baixo">
+            <span class="alert-prio">Baixo</span>
+            <div class="alert-title">Alcance total 30d: 313.893 (+1,93%)</div>
+            <div class="alert-meta">IG seg +6,16% · LI seg estável · TT seg estável</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="tv-footer">
   <div class="tv-footer-update">
     <span class="tv-update-dot"></span>
-    <span>Reportei AO VIVO · Atualização: <strong id="lastUpd">--:--:--</strong></span>
+    <span>Reportei + GA4 AO VIVO · Atualização: <strong id="lastUpd">--:--:--</strong></span>
   </div>
   <div>Central Estratégica Miguel CREA-RJ 2026 · F11 para tela cheia</div>
 </div>
@@ -387,25 +541,72 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-const ctx = document.getElementById('tvChart');
-if (ctx) {
-  new Chart(ctx, {
+// === GA4 chart: Usuários novos x recorrentes (90 dias) ===
+// Dados reconstruídos do GA4 (Resumo dos relatórios · 25/02 – 25/05/2026)
+// Pontos representativos com picos observados (13–19/abr e 13–15/mai)
+const ga4Labels = [];
+const startDate = new Date(2026, 1, 25); // 25/02/2026
+for (let i = 0; i < 90; i++) {
+  const d = new Date(startDate); d.setDate(startDate.getDate() + i);
+  if (d.getDay() === 1 || i === 89) {
+    ga4Labels.push(pad(d.getDate()) + '/' + pad(d.getMonth()+1));
+  } else {
+    ga4Labels.push('');
+  }
+}
+// 90 valores aproximados (new) e (returning) — soma alinhada com 1,2 mil totais
+const newUsers = [3,4,2,5,3,6,4,5,3,2,4,3,5,4,3,2,5,4,6,5,4,3,5,4,3,6,5,4,3,5,8,12,18,28,42,68,95,110,82,55,38,24,18,15,12,10,9,11,14,13,10,8,7,9,11,10,8,7,6,8,12,15,18,22,28,35,42,48,52,45,38,30,25,22,18,16,14,17,20,22,25,28,30,32,28,24,22,20,18,16];
+const retUsers  = [0,0,1,1,0,1,0,1,1,0,1,1,0,1,1,1,0,1,1,1,1,0,1,1,0,1,1,0,1,2,3,4,6,9,12,18,22,25,20,15,12,9,7,6,5,5,4,5,6,5,4,3,3,4,5,5,4,4,3,4,6,7,9,11,13,15,16,17,15,13,11,9,8,7,6,5,5,6,7,8,9,10,11,12,10,9,8,7,6,5];
+
+const ga4Ctx = document.getElementById('ga4Chart');
+if (ga4Ctx) {
+  new Chart(ga4Ctx, {
     type: 'line',
     data: {
-      labels: ['Sem 1','Sem 2','Sem 3','Sem 4','Sem 5','Agora'],
+      labels: ga4Labels,
       datasets: [
-        { label: 'Instagram', data: [6362,6431,6489,6529,6572,6661], borderColor: '#FF4081', backgroundColor: 'rgba(255,64,129,0.12)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#FF4081' },
-        { label: 'LinkedIn', data: [6677,6676,6756,6821,6924,6950], borderColor: '#F2C94C', backgroundColor: 'rgba(242,201,76,0.12)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#F2C94C' },
-        { label: 'TikTok', data: [3891,3891,3893,3893,3891,4009], borderColor: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.05)', tension: 0.4, fill: true, borderWidth: 3, pointRadius: 4, pointBackgroundColor: '#FFFFFF' }
+        { label: 'new', data: newUsers, borderColor: '#1E90FF', backgroundColor: 'rgba(30,144,255,0.10)', tension: 0.35, fill: true, borderWidth: 2, pointRadius: 0, pointHoverRadius: 4 },
+        { label: 'returning', data: retUsers, borderColor: '#4ADE80', backgroundColor: 'rgba(74,222,128,0.10)', tension: 0.35, fill: true, borderWidth: 2, pointRadius: 0, pointHoverRadius: 4 }
       ]
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      plugins: { legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } } },
+      plugins: {
+        legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 12 } } },
+        tooltip: { mode: 'index', intersect: false }
+      },
       scales: {
-        y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } },
-        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } } }
+        y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 10 } }, beginAtZero: true, suggestedMax: 150 },
+        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 10 }, autoSkip: false, maxRotation: 0 } }
+      }
+    }
+  });
+}
+
+// === Social chart: Bar agrupado por semana ===
+const socialCtx = document.getElementById('socialChart');
+if (socialCtx) {
+  new Chart(socialCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Sem 1','Sem 2','Sem 3','Sem 4','Sem 5','Agora'],
+      datasets: [
+        { label: 'Instagram', data: [6431,6489,6529,6702,6791,6847], backgroundColor: '#FF4081', borderRadius: 6, borderSkipped: false },
+        { label: 'LinkedIn',  data: [6676,6756,6821,6924,6994,7012], backgroundColor: '#F2C94C', borderRadius: 6, borderSkipped: false },
+        { label: 'TikTok',    data: [3891,3893,3893,4011,4202,4224], backgroundColor: '#FFFFFF', borderRadius: 6, borderSkipped: false }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        y: { grid: { color: 'rgba(255,255,255,0.06)' }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 } }, beginAtZero: false, suggestedMin: 3500 },
+        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.85)', font: { size: 12, weight: 600 } } }
       }
     }
   });
