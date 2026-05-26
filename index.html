@@ -415,7 +415,7 @@ body {
       <!-- CHART BARRAS AGRUPADAS -->
       <div class="social-chart">
         <div class="chart-title">
-          📊 Crescimento de seguidores · 5 semanas + Agora <small>BARRAS · IG · LI · TT</small>
+          📊 Crescimento semanal de seguidores · Δ por rede <small>NOVOS SEGUIDORES POR SEMANA · IG · LI · TT</small>
         </div>
         <div class="social-chart-canvas">
           <canvas id="socialChart" role="img" aria-label="Crescimento de seguidores em barras agrupadas por semana"></canvas>
@@ -592,18 +592,17 @@ if (ga4Ctx) {
   });
 }
 
-// === Social chart: Bar agrupado por semana ===
-const socialCtx = document.getElementById('socialChart');
-if (socialCtx) {
-  new Chart(socialCtx, {
-    type: 'bar',
-    data: {
-      labels: ['Sem 1','Sem 2','Sem 3','Sem 4','Sem 5','Agora'],
-      datasets: [
-        { label: 'Instagram', data: [6431,6489,6529,6702,6791,6847], backgroundColor: '#FF4081', borderRadius: 6, borderSkipped: false },
-        { label: 'LinkedIn',  data: [6676,6756,6821,6924,6994,7012], backgroundColor: '#F2C94C', borderRadius: 6, borderSkipped: false },
-        { label: 'TikTok',    data: [3891,3893,3893,4011,4202,4224], backgroundColor: '#FFFFFF', borderRadius: 6, borderSkipped: false }
-      ]
-    },
-    options: {
-      responsive:
+// === Social chart: Crescimento semanal (delta de seguidores) ===
+// Séries absolutas (Sem 1..Agora). Calculamos delta = atual - anterior.
+const igAbs = [6431,6489,6529,6702,6791,6847];
+const liAbs = [6676,6756,6821,6924,6994,7012];
+const ttAbs = [3891,3893,3893,4011,4202,4224];
+function deltas(arr) { return arr.slice(1).map((v, i) => v - arr[i]); }
+const igDelta = deltas(igAbs); // 5 valores
+const liDelta = deltas(liAbs);
+const ttDelta = deltas(ttAbs);
+// Labels: cada barra mostra o que cresceu DURANTE aquela semana
+const deltaLabels = ['Sem 1→2','Sem 2→3','Sem 3→4','Sem 4→5','Sem 5→Agora'];
+
+// Plugin custom para desenhar o valor em cima de cada barra
+const valueOnBarPlugin =
