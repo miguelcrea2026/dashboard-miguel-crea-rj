@@ -518,7 +518,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
           </div>
           <div class="social-network-row"><span>Seguidores</span><span>4.247</span></div>
           <div class="social-network-row"><span>Vídeos (30d)</span><span>16</span></div>
-          <div class="social-network-row"><span>Visualizações</span><span>18.894</span></div>
+          <div class="social-network-row"><span>Visualizações</span><span>18.932</span></div>
           <div class="social-network-row"><span>Curtidas</span><span>691</span></div>
         </div>
       </div>
@@ -541,7 +541,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">TT Views: 18.894 (+2.429,32%)</div>
+            <div class="alert-title">TT Views: 18.932 (+2.434,4%)</div>
             <div class="alert-meta">Curtidas 691 (+2.904,35%) · TikTok decolando</div>
           </div>
           <div class="alert alto">
@@ -621,22 +621,26 @@ function unlock() {
   const g = document.getElementById('pwGate');
   if (g) g.remove();
 }
-if (isAuthed()) unlock();
+// Anexar handler ANTES de chamar unlock() — senão ele tenta no form removido
+const pwForm = document.getElementById('pwForm');
+if (pwForm) {
+  pwForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const pw = document.getElementById('pwInput').value;
+    const err = document.getElementById('pwErr');
+    err.textContent = '';
+    const h = await sha256(pw);
+    if (h === PW_HASH) {
+      localStorage.setItem(AUTH_KEY, JSON.stringify({ ts: Date.now(), h }));
+      unlock();
+    } else {
+      err.textContent = 'Senha incorreta';
+      document.getElementById('pwInput').value = '';
+    }
+  });
+}
 
-document.getElementById('pwForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const pw = document.getElementById('pwInput').value;
-  const err = document.getElementById('pwErr');
-  err.textContent = '';
-  const h = await sha256(pw);
-  if (h === PW_HASH) {
-    localStorage.setItem(AUTH_KEY, JSON.stringify({ ts: Date.now(), h }));
-    unlock();
-  } else {
-    err.textContent = 'Senha incorreta';
-    document.getElementById('pwInput').value = '';
-  }
-});
+if (isAuthed()) unlock();
 
 // === Resto do dashboard ===
 function pad(n) { return String(n).padStart(2,'0'); }
