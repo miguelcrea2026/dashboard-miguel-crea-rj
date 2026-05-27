@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="refresh" content="120">
-<title>TV Escritório — Miguel CREA-RJ 2026 · Site + Redes</title>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex,notranslate">
+<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="bingbot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<title>Painel privado</title>
 <style>
 :root {
   --azul: #0B3D91;
@@ -249,9 +253,72 @@ body {
 .tv-footer-update { display: flex; align-items: center; gap: 8px; }
 .tv-update-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); animation: blink 2s infinite; }
 .section-heading { font-size: 11px; font-weight: 700; color: var(--dourado); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+
+/* === GATE DE SENHA === */
+body.locked { overflow: hidden; }
+body.locked > *:not(#pwGate) { display: none !important; }
+#pwGate {
+  position: fixed; inset: 0; z-index: 99999;
+  background: linear-gradient(135deg, var(--azul-deep) 0%, var(--azul-mid) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Segoe UI', -apple-system, sans-serif; color: white;
+}
+#pwGate .pw-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(242,201,76,0.3);
+  border-radius: 18px;
+  padding: 40px 36px;
+  width: 100%; max-width: 380px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+#pwGate .pw-logo {
+  width: 64px; height: 64px;
+  background: var(--dourado); color: var(--azul-deep);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 34px;
+  border: 3px solid white;
+  margin: 0 auto 22px;
+}
+#pwGate h2 { font-size: 22px; font-weight: 800; margin-bottom: 6px; text-align: center; letter-spacing: -0.4px; }
+#pwGate p.pw-sub { font-size: 13px; opacity: 0.7; text-align: center; margin-bottom: 24px; }
+#pwGate input[type=password] {
+  width: 100%; padding: 12px 14px; font-size: 14px;
+  background: rgba(0,0,0,0.30); color: white;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: 10px;
+  outline: none; transition: border-color 0.2s;
+  font-family: inherit;
+}
+#pwGate input[type=password]:focus { border-color: var(--dourado); }
+#pwGate button {
+  width: 100%; margin-top: 14px; padding: 12px;
+  background: var(--dourado); color: var(--azul-deep);
+  border: none; border-radius: 10px;
+  font-weight: 800; font-size: 14px; letter-spacing: 0.5px;
+  cursor: pointer; text-transform: uppercase;
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+#pwGate button:hover { box-shadow: 0 6px 20px rgba(242,201,76,0.4); }
+#pwGate button:active { transform: translateY(1px); }
+#pwGate .pw-err { margin-top: 12px; font-size: 12px; color: var(--vermelho); text-align: center; min-height: 16px; }
+#pwGate .pw-foot { margin-top: 20px; text-align: center; font-size: 11px; opacity: 0.4; }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<div id="pwGate">
+  <div class="pw-card">
+    <div class="pw-logo">M</div>
+    <h2>Acesso restrito</h2>
+    <p class="pw-sub">Painel interno da campanha</p>
+    <form id="pwForm" autocomplete="off">
+      <input type="password" id="pwInput" placeholder="Senha" autocomplete="new-password" autofocus />
+      <button type="submit">Entrar</button>
+      <div class="pw-err" id="pwErr"></div>
+    </form>
+    <div class="pw-foot">Miguel CREA-RJ 2026</div>
+  </div>
+</div>
 
 <div class="tv-header">
   <div class="tv-brand">
@@ -259,7 +326,7 @@ body {
     <div class="tv-brand-text">
       <h1>MIGUEL FERNÁNDEZ · CREA-RJ 2026</h1>
       <p>Central de Monitoramento Digital · Foco no Site + Redes</p>
-      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>38 dias</strong> · GA4 90d (26/fev–26/mai) · Reportei 30d (27/abr–26/mai)</div>
+      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>37 dias</strong> · GA4 90d (27/fev–27/mai) · Reportei 30d (27/abr–26/mai)</div>
     </div>
   </div>
   <div class="tv-status">
@@ -392,23 +459,23 @@ body {
       <div class="social-kpis">
         <div class="social-kpi neutral">
           <div class="social-kpi-label">Seguidores totais</div>
-          <div class="social-kpi-value">18.092</div>
-          <span class="social-kpi-trend trend-neutral">IG 6.849 · LI 7.013 · TT 4.230</span>
+          <div class="social-kpi-value">18.111</div>
+          <span class="social-kpi-trend trend-neutral">IG 6.848 · LI 7.016 · TT 4.247</span>
         </div>
         <div class="social-kpi gold">
           <div class="social-kpi-label">Engaj. postagens (30d)</div>
-          <div class="social-kpi-value">6.834</div>
-          <span class="social-kpi-trend trend-up">↑ +937,03% vs 659</span>
+          <div class="social-kpi-value">7.215</div>
+          <span class="social-kpi-trend trend-up">↑ +994,84% vs 659</span>
         </div>
         <div class="social-kpi green">
           <div class="social-kpi-label">Alcance total (30d)</div>
-          <div class="social-kpi-value">315.136</div>
-          <span class="social-kpi-trend trend-up">↑ +2,33% vs 307.946</span>
+          <div class="social-kpi-value">321.086</div>
+          <span class="social-kpi-trend trend-up">↑ +4,27% vs 307.946</span>
         </div>
         <div class="social-kpi">
           <div class="social-kpi-label">Postagens (30d)</div>
-          <div class="social-kpi-value">41</div>
-          <span class="social-kpi-trend trend-up">↑ +173,33% vs 15</span>
+          <div class="social-kpi-value">42</div>
+          <span class="social-kpi-trend trend-up">↑ +180% vs 15</span>
         </div>
       </div>
 
@@ -429,30 +496,30 @@ body {
             <div class="social-network-badge bg-ig">IG</div>
             <div class="social-network-name">Instagram</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>6.849</span></div>
-          <div class="social-network-row"><span>Novos seg.</span><span>+399</span></div>
-          <div class="social-network-row"><span>Alcance 30d</span><span>312,0K</span></div>
-          <div class="social-network-row"><span>Interações</span><span>11.024</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>6.848</span></div>
+          <div class="social-network-row"><span>Novos seg.</span><span>+398</span></div>
+          <div class="social-network-row"><span>Alcance 30d</span><span>318,0K</span></div>
+          <div class="social-network-row"><span>Interações</span><span>11.434</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
             <div class="social-network-badge bg-li">in</div>
             <div class="social-network-name">LinkedIn</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>7.013</span></div>
-          <div class="social-network-row"><span>Impressões</span><span>9.631</span></div>
-          <div class="social-network-row"><span>Engaj.</span><span>360</span></div>
-          <div class="social-network-row"><span>Membros</span><span>3.115</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.016</span></div>
+          <div class="social-network-row"><span>Impressões</span><span>9.749</span></div>
+          <div class="social-network-row"><span>Engaj.</span><span>364</span></div>
+          <div class="social-network-row"><span>Membros</span><span>3.129</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
             <div class="social-network-badge bg-tt">TT</div>
             <div class="social-network-name">TikTok</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>4.230</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>4.247</span></div>
           <div class="social-network-row"><span>Vídeos (30d)</span><span>16</span></div>
-          <div class="social-network-row"><span>Visualizações</span><span>17.514</span></div>
-          <div class="social-network-row"><span>Curtidas</span><span>654</span></div>
+          <div class="social-network-row"><span>Visualizações</span><span>18.894</span></div>
+          <div class="social-network-row"><span>Curtidas</span><span>691</span></div>
         </div>
       </div>
     </div>
@@ -464,18 +531,18 @@ body {
         <div class="alerts-list">
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">Engaj. postagens 30d: 6.834 (+937,03%)</div>
+            <div class="alert-title">Engaj. postagens 30d: 7.215 (+994,84%)</div>
             <div class="alert-meta">vs 659 · explosão de interações</div>
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">IG Visualizações 30d: 971.371 (+65,85%)</div>
+            <div class="alert-title">IG Visualizações 30d: 994.397 (+69,78%)</div>
             <div class="alert-meta">vs 585.705 · conteúdo escalando</div>
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">TT Views: 17.514 (+2.244,58%)</div>
-            <div class="alert-meta">Curtidas 654 (+2.743,48%) · TikTok decolando</div>
+            <div class="alert-title">TT Views: 18.894 (+2.429,32%)</div>
+            <div class="alert-meta">Curtidas 691 (+2.904,35%) · TikTok decolando</div>
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
@@ -484,33 +551,33 @@ body {
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">Postagens 30d: 41 (+173,33%)</div>
+            <div class="alert-title">Postagens 30d: 42 (+180%)</div>
             <div class="alert-meta">vs 15 · produção quase triplicada</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">IG Interações totais: 11.024 (+45,3%)</div>
-            <div class="alert-meta">Novos seguidores 399 (+64,88%)</div>
+            <div class="alert-title">IG Interações totais: 11.434 (+50,71%)</div>
+            <div class="alert-meta">Novos seguidores 398 (+64,46%)</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">IG Visitas do perfil: 5.187 (-61,84%)</div>
+            <div class="alert-title">IG Visitas do perfil: 5.398 (-60,28%)</div>
             <div class="alert-meta">vs 13.591 · queda forte · investigar</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">LI Membros atingidos: 3.115 (-58,28%)</div>
-            <div class="alert-meta">Impr. 9.631 (-48,54%) · Engaj. 360 (-43,4%)</div>
+            <div class="alert-title">LI Membros atingidos: 3.129 (-58,09%)</div>
+            <div class="alert-meta">Impr. 9.749 (-47,91%) · Engaj. 364 (-42,77%)</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">LI Reações: ~325 (-45,29%)</div>
+            <div class="alert-title">LI Reações: 329 (-44,61%)</div>
             <div class="alert-meta">Comentários 34 (-19,05%) · LinkedIn precisa de revisão de conteúdo</div>
           </div>
           <div class="alert baixo">
             <span class="alert-prio">Baixo</span>
-            <div class="alert-title">Alcance total 30d: 315.136 (+2,33%)</div>
-            <div class="alert-meta">IG seg +6,19% · LI seg estável · TT seg estável</div>
+            <div class="alert-title">Alcance total 30d: 321.086 (+4,27%)</div>
+            <div class="alert-meta">IG seg +6,17% · LI seg estável · TT seg estável</div>
           </div>
         </div>
       </div>
@@ -528,6 +595,50 @@ body {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
+// === GATE DE SENHA (verificação client-side via SHA-256) ===
+// Senha definida fora desta página. Hash abaixo, senha em si não fica no HTML.
+const PW_HASH = 'dafabf7d373138f0bf3e790258ce3fce104d4ce1f2c91761abf03f30e28b0410';
+const AUTH_KEY = 'mfd-dash-auth-v1';
+const AUTH_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 dias
+
+async function sha256(text) {
+  const buf = new TextEncoder().encode(text);
+  const h = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+function isAuthed() {
+  try {
+    const raw = localStorage.getItem(AUTH_KEY);
+    if (!raw) return false;
+    const { ts, h } = JSON.parse(raw);
+    if (h !== PW_HASH) return false;
+    if (Date.now() - ts > AUTH_TTL_MS) return false;
+    return true;
+  } catch { return false; }
+}
+function unlock() {
+  document.body.classList.remove('locked');
+  const g = document.getElementById('pwGate');
+  if (g) g.remove();
+}
+if (isAuthed()) unlock();
+
+document.getElementById('pwForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const pw = document.getElementById('pwInput').value;
+  const err = document.getElementById('pwErr');
+  err.textContent = '';
+  const h = await sha256(pw);
+  if (h === PW_HASH) {
+    localStorage.setItem(AUTH_KEY, JSON.stringify({ ts: Date.now(), h }));
+    unlock();
+  } else {
+    err.textContent = 'Senha incorreta';
+    document.getElementById('pwInput').value = '';
+  }
+});
+
+// === Resto do dashboard ===
 function pad(n) { return String(n).padStart(2,'0'); }
 function updateClock() {
   const d = new Date();
@@ -583,7 +694,6 @@ if (ga4Ctx) {
         x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 10 }, autoSkip: false, maxRotation: 0,
           callback: function(value, index) {
             if (!ga4ShowOnAxis[index]) return '';
-            // No eixo: só dia/mês (resumido) — tooltip terá a versão completa
             return ga4Labels[index].split(' ').slice(0, 2).join('/');
           }
         } }
@@ -593,18 +703,15 @@ if (ga4Ctx) {
 }
 
 // === Social chart: Crescimento semanal (delta de seguidores) ===
-// Séries absolutas (Sem 1..Agora). Calculamos delta = atual - anterior.
 const igAbs = [6431,6489,6529,6702,6791,6849];
 const liAbs = [6676,6756,6821,6924,6994,7013];
 const ttAbs = [3891,3893,3893,4011,4202,4230];
 function deltas(arr) { return arr.slice(1).map((v, i) => v - arr[i]); }
-const igDelta = deltas(igAbs); // 5 valores
+const igDelta = deltas(igAbs);
 const liDelta = deltas(liAbs);
 const ttDelta = deltas(ttAbs);
-// Labels: cada barra mostra o que cresceu DURANTE aquela semana
 const deltaLabels = ['Sem 1→2','Sem 2→3','Sem 3→4','Sem 4→5','Sem 5→Agora'];
 
-// Plugin custom para desenhar o valor em cima de cada barra
 const valueOnBarPlugin = {
   id: 'valueOnBar',
   afterDatasetsDraw(chart) {
@@ -642,7 +749,7 @@ if (socialCtx) {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      layout: { padding: { top: 24 } }, // espaço para o valor em cima
+      layout: { padding: { top: 24 } },
       plugins: {
         legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } },
         tooltip: {
