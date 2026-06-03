@@ -207,7 +207,7 @@ body {
 }
 .social-chart-canvas { flex: 1; position: relative; min-height: 260px; }
 
-.social-networks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.social-networks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .social-network {
   background: rgba(0,0,0,0.30);
   border-radius: 12px;
@@ -218,6 +218,7 @@ body {
 .bg-ig { background: linear-gradient(135deg,#f09433,#dc2743,#bc1888); }
 .bg-tt { background: #000; border: 1px solid #444; }
 .bg-li { background: #0A66C2; }
+.bg-fb { background: #1877F2; }
 .social-network-name { font-size: 13px; font-weight: 700; }
 .social-network-row { display: flex; justify-content: space-between; font-size: 12px; padding: 3px 0; border-top: 1px solid rgba(255,255,255,0.06); }
 .social-network-row:first-of-type { border-top: none; }
@@ -302,6 +303,53 @@ body.locked > *:not(#pwGate) { display: none !important; }
 #pwGate button:active { transform: translateY(1px); }
 #pwGate .pw-err { margin-top: 12px; font-size: 12px; color: var(--vermelho); text-align: center; min-height: 16px; }
 #pwGate .pw-foot { margin-top: 20px; text-align: center; font-size: 11px; opacity: 0.4; }
+
+/* === BLOCO EVENTO 15/06 === */
+.event-section {
+  background: linear-gradient(135deg, rgba(242,201,76,0.18) 0%, rgba(11,61,145,0.18) 100%);
+  border: 2px solid rgba(242,201,76,0.55);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 28px;
+  position: relative;
+  box-shadow: 0 8px 28px rgba(242,201,76,0.12);
+}
+.event-badge {
+  position: absolute; top: -14px; left: 28px;
+  background: var(--dourado); color: var(--azul-deep);
+  padding: 6px 18px; border-radius: 999px;
+  font-size: 13px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; box-shadow: 0 4px 14px rgba(242,201,76,0.5);
+}
+.event-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-top: 8px; }
+@media (max-width: 1100px) { .event-grid { grid-template-columns: 1fr; } }
+.event-hero {
+  background: linear-gradient(135deg, var(--dourado) 0%, var(--dourado-strong) 100%);
+  color: var(--azul-deep); border-radius: 16px; padding: 24px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+.event-hero-label { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+.event-hero-value { font-size: 86px; font-weight: 900; line-height: 1; letter-spacing: -3px; margin: 6px 0; }
+.event-hero-sub { font-size: 14px; font-weight: 700; }
+.event-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 800px) { .event-cards { grid-template-columns: 1fr; } }
+.event-card { background: rgba(0,0,0,0.30); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 20px; position: relative; overflow: hidden; }
+.event-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+.event-card.whatsapp::before { background: #25D366; }
+.event-card.pdf::before { background: var(--laranja); }
+.event-card.both::before { background: var(--ciano); }
+.event-card-label { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; }
+.event-card-value { font-size: 50px; font-weight: 800; margin-top: 6px; letter-spacing: -2px; }
+.event-card.whatsapp .event-card-value { color: #4ADE80; }
+.event-card.pdf .event-card-value { color: var(--laranja); }
+.event-card.both .event-card-value { color: var(--ciano); }
+.event-card-sub { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+.event-funnel { display: flex; align-items: center; gap: 10px; margin-top: 18px; flex-wrap: wrap; background: rgba(0,0,0,0.22); border-radius: 14px; padding: 16px 18px; }
+.funnel-step { flex: 1; min-width: 110px; text-align: center; }
+.funnel-num { font-size: 30px; font-weight: 800; color: var(--dourado); letter-spacing: -1px; }
+.funnel-step.decline .funnel-num { color: var(--vermelho); }
+.funnel-lbl { font-size: 11px; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.funnel-arrow { font-size: 22px; color: rgba(242,201,76,0.6); font-weight: 800; }
 </style>
 </head>
 <body class="locked">
@@ -326,7 +374,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <div class="tv-brand-text">
       <h1>MIGUEL FERNÁNDEZ · CREA-RJ 2026</h1>
       <p>Central de Monitoramento Digital · Foco no Site + Redes</p>
-      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> · faltam <strong>37 dias</strong> · GA4 90d (27/fev–27/mai) · Reportei 30d (27/abr–26/mai)</div>
+      <div class="tv-election">🎉 Evento <strong>15/06/2026</strong> (faltam <strong>12 dias</strong>) · 🗓 Eleição <strong>03/07/2026</strong> · GA4 90d (05/mar–03/jun)</div>
     </div>
   </div>
   <div class="tv-status">
@@ -341,35 +389,73 @@ body.locked > *:not(#pwGate) { display: none !important; }
   </div>
 </div>
 
+<!-- ============== EVENTO DE CAMPANHA · 15/06/2026 ============== -->
+<div class="event-section">
+  <div class="event-badge">🎉 Evento de Campanha · 15/06/2026</div>
+  <div class="event-grid">
+    <div class="event-hero">
+      <div class="event-hero-label">Total de confirmados</div>
+      <div class="event-hero-value">179</div>
+      <div class="event-hero-sub">⏳ faltam 12 dias para o evento</div>
+    </div>
+    <div class="event-cards">
+      <div class="event-card whatsapp">
+        <div class="event-card-label">✅ Confirmados WhatsApp</div>
+        <div class="event-card-value">111</div>
+        <div class="event-card-sub">Unnichat · #CONFIRMOU PRESENÇA</div>
+      </div>
+      <div class="event-card pdf">
+        <div class="event-card-label">📄 Confirmados convite PDF</div>
+        <div class="event-card-value">68</div>
+        <div class="event-card-sub">planilha Drive · únicos (já sem duplicar WhatsApp)</div>
+      </div>
+      <div class="event-card both">
+        <div class="event-card-label">🔁 Nos dois canais</div>
+        <div class="event-card-value">40</div>
+        <div class="event-card-sub">confirmaram no WhatsApp e no PDF</div>
+      </div>
+    </div>
+  </div>
+  <div class="event-funnel">
+    <div class="funnel-step"><div class="funnel-num">679</div><div class="funnel-lbl">Convites enviados</div></div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><div class="funnel-num">160</div><div class="funnel-lbl">Responderam</div></div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step"><div class="funnel-num">111</div><div class="funnel-lbl">Confirmaram (WhatsApp)</div></div>
+    <div class="funnel-arrow">→</div>
+    <div class="funnel-step decline"><div class="funnel-num">60</div><div class="funnel-lbl">Não vão</div></div>
+  </div>
+</div>
+
 <!-- ============== BLOCO PRINCIPAL: SITE miguelcrea.com ============== -->
 <div class="site-section">
   <div class="site-badge">🌐 Foco · Site</div>
   <div class="site-title-row" style="margin-top: 6px;">
     <div class="site-title">miguelcrea.com · Google Analytics 4</div>
-    <div class="site-period">Últimos 90 dias · 26/02 – 26/05/2026</div>
+    <div class="site-period">Últimos 90 dias · 05/03 – 03/06/2026</div>
   </div>
 
   <!-- KPIs SITE -->
   <div class="site-kpis">
     <div class="site-kpi">
       <div class="site-kpi-label">Usuários ativos</div>
-      <div class="site-kpi-value">1,3 mil</div>
-      <div class="site-kpi-sub">+100 vs leitura anterior (1,2 mil)</div>
+      <div class="site-kpi-value">1,4 mil</div>
+      <div class="site-kpi-sub">+100 vs leitura anterior (1,3 mil)</div>
     </div>
     <div class="site-kpi green">
       <div class="site-kpi-label">Novos usuários</div>
-      <div class="site-kpi-value">1,2 mil</div>
-      <div class="site-kpi-sub">~92% dos usuários ativos</div>
+      <div class="site-kpi-value">1,4 mil</div>
+      <div class="site-kpi-sub">~99% dos usuários ativos</div>
     </div>
     <div class="site-kpi blue">
       <div class="site-kpi-label">Tempo médio engaj./usuário</div>
-      <div class="site-kpi-value">1 min</div>
-      <div class="site-kpi-sub">Subiu de 57s → 1 min 00 s</div>
+      <div class="site-kpi-value">1 min 03 s</div>
+      <div class="site-kpi-sub">Subiu de 1 min 00 s → 1 min 03 s</div>
     </div>
     <div class="site-kpi gold">
       <div class="site-kpi-label">Contagem de eventos</div>
-      <div class="site-kpi-value">9 mil</div>
-      <div class="site-kpi-sub">+400 vs leitura anterior (8,6 mil)</div>
+      <div class="site-kpi-value">10 mil</div>
+      <div class="site-kpi-sub">+1 mil vs leitura anterior (9 mil)</div>
     </div>
   </div>
 
@@ -392,19 +478,19 @@ body.locked > *:not(#pwGate) { display: none !important; }
             <span>Página</span><span class="v" style="color:var(--dourado);">Views</span><span class="u" style="color:var(--dourado);">Users</span>
           </div>
           <div class="mini-table-row data">
-            <span title="Miguel CREA-RJ (home)">🏠 / (home)</span><span class="v">2.000</span><span class="u">1.200</span>
+            <span title="Miguel CREA-RJ (home)">🏠 / (home)</span><span class="v">2.200</span><span class="u">1.300</span>
           </div>
           <div class="mini-table-row data">
-            <span>/projetando-o-crea-do-futuro/</span><span class="v">310</span><span class="u">102</span>
+            <span>/projetando-o-crea-do-futuro/</span><span class="v">335</span><span class="u">106</span>
           </div>
           <div class="mini-table-row data">
-            <span>/quem-sou-eu/</span><span class="v">299</span><span class="u">81</span>
+            <span>/quem-sou-eu/</span><span class="v">312</span><span class="u">82</span>
           </div>
           <div class="mini-table-row data">
-            <span>/nossos-candidatos/</span><span class="v">91</span><span class="u">48</span>
+            <span>/miguel/</span><span class="v">202</span><span class="u">50</span>
           </div>
           <div class="mini-table-row data">
-            <span>/miguel/</span><span class="v">86</span><span class="u">16</span>
+            <span>/nossos-candidatos/</span><span class="v">106</span><span class="u">52</span>
           </div>
           <div class="mini-table-row data">
             <span>/nossos-apoios/</span><span class="v">77</span><span class="u">50</span>
@@ -417,29 +503,29 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <!-- ORIGEM DE TRÁFEGO + INSIGHT -->
   <div class="site-bottom-row">
     <div class="site-channels">
-      <div class="section-heading">🚦 Sessões por origem/mídia (90d) · Total ~1.776</div>
+      <div class="section-heading">🚦 Sessões por origem/mídia (90d) · Total ~2.011</div>
       <div class="channel-row" style="background: rgba(0,0,0,0.30); font-weight: 700; font-size: 11px; color: var(--dourado); text-transform: uppercase; letter-spacing: 1px;">
         <span>Origem / mídia</span><span style="text-align:right;">Sessões</span><span style="text-align:right;">% share</span>
       </div>
-      <div class="channel-row"><span><span class="chip chip-direct">Direct</span> (direct) / (none)</span><span style="text-align:right; font-weight:700;">1.100</span><span style="text-align:right; color: rgba(255,255,255,0.7);">61,9%</span></div>
-      <div class="channel-row"><span><span class="chip chip-paid">Paid</span> ig / paid</span><span style="text-align:right; font-weight:700;">323</span><span style="text-align:right; color: rgba(255,255,255,0.7);">18,2%</span></div>
-      <div class="channel-row"><span><span class="chip chip-organic">Organic</span> google / organic</span><span style="text-align:right; font-weight:700;">248</span><span style="text-align:right; color: rgba(255,255,255,0.7);">14,0%</span></div>
-      <div class="channel-row"><span><span class="chip chip-referral">Ref.</span> l.instagram.com / referral</span><span style="text-align:right; font-weight:700;">69</span><span style="text-align:right; color: rgba(255,255,255,0.7);">3,9%</span></div>
-      <div class="channel-row"><span><span class="chip chip-paid">Paid</span> fb / paid</span><span style="text-align:right; font-weight:700;">14</span><span style="text-align:right; color: rgba(255,255,255,0.7);">0,8%</span></div>
-      <div class="channel-row"><span><span class="chip chip-referral">Ref.</span> facebook.com / referral</span><span style="text-align:right; font-weight:700;">11</span><span style="text-align:right; color: rgba(255,255,255,0.7);">0,6%</span></div>
-      <div class="channel-row"><span><span class="chip chip-social">Social</span> ig / social</span><span style="text-align:right; font-weight:700;">11</span><span style="text-align:right; color: rgba(255,255,255,0.7);">0,6%</span></div>
+      <div class="channel-row"><span><span class="chip chip-direct">Direct</span> (direct) / (none)</span><span style="text-align:right; font-weight:700;">1.200</span><span style="text-align:right; color: rgba(255,255,255,0.7);">59,7%</span></div>
+      <div class="channel-row"><span><span class="chip chip-paid">Paid</span> ig / paid</span><span style="text-align:right; font-weight:700;">394</span><span style="text-align:right; color: rgba(255,255,255,0.7);">19,6%</span></div>
+      <div class="channel-row"><span><span class="chip chip-organic">Organic</span> google / organic</span><span style="text-align:right; font-weight:700;">274</span><span style="text-align:right; color: rgba(255,255,255,0.7);">13,6%</span></div>
+      <div class="channel-row"><span><span class="chip chip-referral">Ref.</span> l.instagram.com / referral</span><span style="text-align:right; font-weight:700;">69</span><span style="text-align:right; color: rgba(255,255,255,0.7);">3,4%</span></div>
+      <div class="channel-row"><span><span class="chip chip-paid">Paid</span> fb / paid</span><span style="text-align:right; font-weight:700;">34</span><span style="text-align:right; color: rgba(255,255,255,0.7);">1,7%</span></div>
+      <div class="channel-row"><span><span class="chip chip-referral">Ref.</span> search.google.com / referral</span><span style="text-align:right; font-weight:700;">26</span><span style="text-align:right; color: rgba(255,255,255,0.7);">1,3%</span></div>
+      <div class="channel-row"><span><span class="chip chip-referral">Ref.</span> facebook.com / referral</span><span style="text-align:right; font-weight:700;">14</span><span style="text-align:right; color: rgba(255,255,255,0.7);">0,7%</span></div>
     </div>
 
     <div style="display:flex; flex-direction:column; gap: 14px;">
       <div class="site-insight">
         <div class="site-insight-label">💡 Insight GA4</div>
         <div class="site-insight-title">Pico de usuários "Direct" em <strong style="color:var(--dourado);">14 de maio</strong></div>
-        <div class="site-insight-meta">O canal Direct concentra 62,9% das sessões. Reforce divulgação offline e materiais com URL curta nas próximas semanas.</div>
+        <div class="site-insight-meta">O canal Direct concentra 59,7% das sessões. Reforce divulgação offline e materiais com URL curta nas próximas semanas.</div>
       </div>
       <div class="site-insight" style="background: linear-gradient(135deg, rgba(74,222,128,0.16) 0%, rgba(74,222,128,0.04) 100%); border-color: rgba(74,222,128,0.35);">
         <div class="site-insight-label" style="color: var(--verde);">✅ Conversão de fluxo</div>
-        <div class="site-insight-title">Home concentra <strong style="color:var(--verde);">58%</strong> da audiência total</div>
-        <div class="site-insight-meta">2.000 views · 1.200 usuários · taxa de rejeição 58%. Otimizar CTA da home para reduzir bounce abaixo de 50%.</div>
+        <div class="site-insight-title">Home concentra <strong style="color:var(--verde);">66%</strong> das páginas vistas</div>
+        <div class="site-insight-meta">2.200 views · 1.300 usuários · taxa de rejeição 59%. Otimizar CTA da home para reduzir bounce abaixo de 50%.</div>
       </div>
     </div>
   </div>
@@ -450,7 +536,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <div class="social-badge">📱 Redes · Suporte</div>
   <div class="social-title-row" style="margin-top: 6px;">
     <div class="social-title">Performance nas redes sociais</div>
-    <div class="social-period">Período Reportei: 27/04 – 26/05/2026 vs 28/03 – 26/04/2026</div>
+    <div class="social-period">Período Reportei: 05/05 – 03/06/2026 vs 05/04 – 04/05/2026 · Últimos 30 dias</div>
   </div>
 
   <div class="social-main">
@@ -459,30 +545,30 @@ body.locked > *:not(#pwGate) { display: none !important; }
       <div class="social-kpis">
         <div class="social-kpi neutral">
           <div class="social-kpi-label">Seguidores totais</div>
-          <div class="social-kpi-value">18.111</div>
-          <span class="social-kpi-trend trend-neutral">IG 6.848 · LI 7.016 · TT 4.247</span>
+          <div class="social-kpi-value">18.615</div>
+          <span class="social-kpi-trend trend-neutral">IG 6.986 · LI 7.051 · TT 4.493 · FB 85</span>
         </div>
         <div class="social-kpi gold">
           <div class="social-kpi-label">Engaj. postagens (30d)</div>
-          <div class="social-kpi-value">7.215</div>
-          <span class="social-kpi-trend trend-up">↑ +994,84% vs 659</span>
+          <div class="social-kpi-value">10.060</div>
+          <span class="social-kpi-trend trend-up">↑ +104,72% vs 4.914</span>
         </div>
         <div class="social-kpi green">
           <div class="social-kpi-label">Alcance total (30d)</div>
-          <div class="social-kpi-value">321.086</div>
-          <span class="social-kpi-trend trend-up">↑ +4,27% vs 307.946</span>
+          <div class="social-kpi-value">555.781</div>
+          <span class="social-kpi-trend trend-up">↑ +26,99% vs 437.652 · contas consolidadas</span>
         </div>
         <div class="social-kpi">
           <div class="social-kpi-label">Postagens (30d)</div>
-          <div class="social-kpi-value">42</div>
-          <span class="social-kpi-trend trend-up">↑ +180% vs 15</span>
+          <div class="social-kpi-value">37</div>
+          <span class="social-kpi-trend trend-up">↑ +76,19% vs 21</span>
         </div>
       </div>
 
       <!-- CHART BARRAS AGRUPADAS -->
       <div class="social-chart">
         <div class="chart-title">
-          📊 Crescimento semanal de seguidores · Δ por rede <small>NOVOS SEGUIDORES POR SEMANA · IG · LI · TT</small>
+          📊 Crescimento semanal de seguidores · Δ por rede <small>NOVOS SEGUIDORES POR SEMANA · IG · LI · TT · FB</small>
         </div>
         <div class="social-chart-canvas">
           <canvas id="socialChart" role="img" aria-label="Crescimento de seguidores em barras agrupadas por semana"></canvas>
@@ -496,30 +582,40 @@ body.locked > *:not(#pwGate) { display: none !important; }
             <div class="social-network-badge bg-ig">IG</div>
             <div class="social-network-name">Instagram</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>6.848</span></div>
-          <div class="social-network-row"><span>Novos seg.</span><span>+398</span></div>
-          <div class="social-network-row"><span>Alcance 30d</span><span>318,0K</span></div>
-          <div class="social-network-row"><span>Interações</span><span>11.434</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>6.986</span></div>
+          <div class="social-network-row"><span>Alcance 30d</span><span>321,0K</span></div>
+          <div class="social-network-row"><span>Views 30d</span><span>1,06M</span></div>
+          <div class="social-network-row"><span>Interações 30d</span><span>14.689</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
             <div class="social-network-badge bg-li">in</div>
             <div class="social-network-name">LinkedIn</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>7.016</span></div>
-          <div class="social-network-row"><span>Impressões</span><span>9.749</span></div>
-          <div class="social-network-row"><span>Engaj.</span><span>364</span></div>
-          <div class="social-network-row"><span>Membros</span><span>3.129</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.051</span></div>
+          <div class="social-network-row"><span>Impressões 30d</span><span>9.270</span></div>
+          <div class="social-network-row"><span>Engaj. 30d</span><span>365</span></div>
+          <div class="social-network-row"><span>Membros 30d</span><span>2.844</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
             <div class="social-network-badge bg-tt">TT</div>
             <div class="social-network-name">TikTok</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>4.247</span></div>
-          <div class="social-network-row"><span>Vídeos (30d)</span><span>16</span></div>
-          <div class="social-network-row"><span>Visualizações</span><span>18.932</span></div>
-          <div class="social-network-row"><span>Curtidas</span><span>691</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>4.493</span></div>
+          <div class="social-network-row"><span>Vídeos 30d</span><span>15</span></div>
+          <div class="social-network-row"><span>Views 30d</span><span>30,0K</span></div>
+          <div class="social-network-row"><span>Curtidas 30d</span><span>1.077</span></div>
+        </div>
+        <div class="social-network">
+          <div class="social-network-header">
+            <div class="social-network-badge bg-fb">f</div>
+            <div class="social-network-name">Facebook</div>
+          </div>
+          <div class="social-network-row"><span>Seguidores</span><span>85</span></div>
+          <div class="social-network-row"><span>Novos seg. 7d</span><span>-3</span></div>
+          <div class="social-network-row"><span>Visualizadores 7d</span><span>119,7K</span></div>
+          <div class="social-network-row"><span>Views pág. 7d</span><span>186,8K</span></div>
         </div>
       </div>
     </div>
@@ -527,57 +623,57 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <!-- ALERTAS REDES -->
     <div class="social-right">
       <div class="social-alerts">
-        <div class="section-heading">🔔 Alertas críticos (variações >30%)</div>
+        <div class="section-heading">🔔 Alertas críticos (variações >30% · 30d vs 30d ant.)</div>
         <div class="alerts-list">
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">Engaj. postagens 30d: 7.215 (+994,84%)</div>
-            <div class="alert-meta">vs 659 · explosão de interações</div>
+            <div class="alert-title">TT Views 30d: 29.998 (+2.234,47%)</div>
+            <div class="alert-meta">vs 1.285 · TikTok explodiu no período · principal motor de alcance novo</div>
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">IG Visualizações 30d: 994.397 (+69,78%)</div>
-            <div class="alert-meta">vs 585.705 · conteúdo escalando</div>
+            <div class="alert-title">TT Curtidas 30d: 1.077 (+2.347,73%)</div>
+            <div class="alert-meta">vs 44 · engajamento do TikTok acompanhou o salto de visualizações</div>
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">TT Views: 18.932 (+2.434,4%)</div>
-            <div class="alert-meta">Curtidas 691 (+2.904,35%) · TikTok decolando</div>
-          </div>
-          <div class="alert alto">
-            <span class="alert-prio">Alto</span>
-            <div class="alert-title">TT Vídeos: 16 (+700%)</div>
-            <div class="alert-meta">vs 2 · cadência de TikTok 8x maior</div>
-          </div>
-          <div class="alert alto">
-            <span class="alert-prio">Alto</span>
-            <div class="alert-title">Postagens 30d: 42 (+180%)</div>
-            <div class="alert-meta">vs 15 · produção quase triplicada</div>
+            <div class="alert-title">Engaj. postagens 30d: 10.060 (+104,72%)</div>
+            <div class="alert-meta">vs 4.914 · engajamento consolidado mais que dobrou</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">IG Interações totais: 11.434 (+50,71%)</div>
-            <div class="alert-meta">Novos seguidores 398 (+64,46%)</div>
+            <div class="alert-title">Novos seguidores 30d: 477 (+123,94%)</div>
+            <div class="alert-meta">vs 213 · IG variação de seguidores 476 (+114,41% vs 222)</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">IG Visitas do perfil: 5.398 (-60,28%)</div>
-            <div class="alert-meta">vs 13.591 · queda forte · investigar</div>
+            <div class="alert-title">TT Vídeos 30d: 15 (+400%)</div>
+            <div class="alert-meta">vs 3 · forte aumento de produção no TikTok puxou o desempenho</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">LI Membros atingidos: 3.129 (-58,09%)</div>
-            <div class="alert-meta">Impr. 9.749 (-47,91%) · Engaj. 364 (-42,77%)</div>
+            <div class="alert-title">LI Membros atingidos 30d: 2.844 (-52,73%)</div>
+            <div class="alert-meta">vs 6.017 · alcance no LinkedIn caiu pela metade · revisar cadência</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">LI Reações: 329 (-44,61%)</div>
-            <div class="alert-meta">Comentários 34 (-19,05%) · LinkedIn precisa de revisão de conteúdo</div>
+            <div class="alert-title">LI Impressões 30d: 9.270 (-39,95%)</div>
+            <div class="alert-meta">vs 15.436 · queda de exposição orgânica no LinkedIn</div>
           </div>
           <div class="alert baixo">
             <span class="alert-prio">Baixo</span>
-            <div class="alert-title">Alcance total 30d: 321.086 (+4,27%)</div>
-            <div class="alert-meta">IG seg +6,17% · LI seg estável · TT seg estável</div>
+            <div class="alert-title">LI Reações 30d: 330 (-33,6%) · Engaj. 365 (-32,41%)</div>
+            <div class="alert-meta">vs 497 / 540 · engajamento do LinkedIn recuou junto com o alcance</div>
+          </div>
+          <div class="alert baixo">
+            <span class="alert-prio">Baixo</span>
+            <div class="alert-title">Postagens 30d: 37 (+76,19%)</div>
+            <div class="alert-meta">vs 21 · maior volume de publicações sustentou alcance consolidado</div>
+          </div>
+          <div class="alert baixo">
+            <span class="alert-prio">Baixo</span>
+            <div class="alert-title">IG Visualizações 30d: 1,06M (+66,1%)</div>
+            <div class="alert-meta">vs 637.894 · Alcance total da conta 555.781 (+26,99%)</div>
           </div>
         </div>
       </div>
@@ -707,14 +803,16 @@ if (ga4Ctx) {
 }
 
 // === Social chart: Crescimento semanal (delta de seguidores) ===
-const igAbs = [6431,6489,6529,6702,6791,6849];
-const liAbs = [6676,6756,6821,6924,6994,7013];
-const ttAbs = [3891,3893,3893,4011,4202,4230];
+const igAbs = [6489,6529,6702,6791,6894,6929,6986];
+const liAbs = [6756,6821,6924,6994,7025,7039,7051];
+const ttAbs = [3893,3893,4011,4202,4283,4414,4493];
+const fbAbs = [88,88,88,88,88,88,85];
 function deltas(arr) { return arr.slice(1).map((v, i) => v - arr[i]); }
 const igDelta = deltas(igAbs);
 const liDelta = deltas(liAbs);
 const ttDelta = deltas(ttAbs);
-const deltaLabels = ['Sem 1→2','Sem 2→3','Sem 3→4','Sem 4→5','Sem 5→Agora'];
+const fbDelta = deltas(fbAbs);
+const deltaLabels = ['22–28/04','29/04–05/05','06–12/05','13–19/05','20–26/05','27/05–02/06'];
 
 const valueOnBarPlugin = {
   id: 'valueOnBar',
@@ -747,7 +845,8 @@ if (socialCtx) {
       datasets: [
         { label: 'Instagram', data: igDelta, backgroundColor: '#FF4081', borderRadius: 6, borderSkipped: false },
         { label: 'LinkedIn',  data: liDelta, backgroundColor: '#F2C94C', borderRadius: 6, borderSkipped: false },
-        { label: 'TikTok',    data: ttDelta, backgroundColor: '#FFFFFF', borderRadius: 6, borderSkipped: false }
+        { label: 'TikTok',    data: ttDelta, backgroundColor: '#FFFFFF', borderRadius: 6, borderSkipped: false },
+        { label: 'Facebook',  data: fbDelta, backgroundColor: '#1877F2', borderRadius: 6, borderSkipped: false }
       ]
     },
     options: {
