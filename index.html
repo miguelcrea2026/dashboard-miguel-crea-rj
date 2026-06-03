@@ -374,7 +374,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <div class="tv-brand-text">
       <h1>MIGUEL FERNÁNDEZ · CREA-RJ 2026</h1>
       <p>Central de Monitoramento Digital · Foco no Site + Redes</p>
-      <div class="tv-election">🎉 Evento <strong>15/06/2026</strong> (faltam <strong>12 dias</strong>) · 🗓 Eleição <strong>03/07/2026</strong> · GA4 90d (05/mar–03/jun)</div>
+      <div class="tv-election">🎉 Evento <strong>15/06/2026</strong> (faltam <strong><span id="cdEvento">12</span> dias</strong>) · 🗓 Eleição <strong>03/07/2026</strong> (faltam <strong><span id="cdEleicao">30</span> dias</strong>) · GA4 90d (05/mar–03/jun)</div>
     </div>
   </div>
   <div class="tv-status">
@@ -395,19 +395,19 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <div class="event-grid">
     <div class="event-hero">
       <div class="event-hero-label">Total de confirmados</div>
-      <div class="event-hero-value">179</div>
-      <div class="event-hero-sub">⏳ faltam 12 dias para o evento</div>
+      <div class="event-hero-value">183</div>
+      <div class="event-hero-sub">⏳ faltam <span id="cdEventoHero">12</span> dias para o evento</div>
     </div>
     <div class="event-cards">
       <div class="event-card whatsapp">
         <div class="event-card-label">✅ Confirmados WhatsApp</div>
-        <div class="event-card-value">111</div>
-        <div class="event-card-sub">Unnichat · #CONFIRMOU PRESENÇA</div>
+        <div class="event-card-value">109</div>
+        <div class="event-card-sub">Unnichat · inclui os 40 que também confirmaram no PDF</div>
       </div>
       <div class="event-card pdf">
         <div class="event-card-label">📄 Confirmados convite PDF</div>
-        <div class="event-card-value">68</div>
-        <div class="event-card-sub">planilha Drive · únicos (já sem duplicar WhatsApp)</div>
+        <div class="event-card-value">74</div>
+        <div class="event-card-sub">formulário/planilha · únicos (já sem duplicar WhatsApp)</div>
       </div>
       <div class="event-card both">
         <div class="event-card-label">🔁 Nos dois canais</div>
@@ -421,7 +421,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <div class="funnel-arrow">→</div>
     <div class="funnel-step"><div class="funnel-num">160</div><div class="funnel-lbl">Responderam</div></div>
     <div class="funnel-arrow">→</div>
-    <div class="funnel-step"><div class="funnel-num">111</div><div class="funnel-lbl">Confirmaram (WhatsApp)</div></div>
+    <div class="funnel-step"><div class="funnel-num">109</div><div class="funnel-lbl">Confirmaram (WhatsApp)</div></div>
     <div class="funnel-arrow">→</div>
     <div class="funnel-step decline"><div class="funnel-num">60</div><div class="funnel-lbl">Não vão</div></div>
   </div>
@@ -750,6 +750,20 @@ function updateClock() {
   document.getElementById('lastUpd').textContent = time;
 }
 updateClock();
+
+// Contagens regressivas dinâmicas (evento 15/06 e eleição 03/07)
+function updateCountdowns() {
+  const hoje = new Date(); hoje.setHours(0,0,0,0);
+  const umDia = 86400000;
+  const evento = new Date(2026, 5, 15);
+  const eleicao = new Date(2026, 6, 3);
+  const dEv = Math.max(0, Math.round((evento - hoje) / umDia));
+  const dEl = Math.max(0, Math.round((eleicao - hoje) / umDia));
+  const a = document.getElementById('cdEvento');     if (a) a.textContent = dEv;
+  const b = document.getElementById('cdEleicao');    if (b) b.textContent = dEl;
+  const c = document.getElementById('cdEventoHero'); if (c) c.textContent = dEv;
+}
+updateCountdowns();
 setInterval(updateClock, 1000);
 
 // === GA4 chart: Usuários novos x recorrentes (90 dias) ===
@@ -765,7 +779,7 @@ for (let i = 0; i < 90; i++) {
   const diasSemana = ['dom','seg','ter','qua','qui','sex','sáb'];
   ga4Labels.push(pad(d.getDate()) + ' ' + meses3[d.getMonth()] + ' (' + diasSemana[d.getDay()] + ')');
   // Marca se deve aparecer no eixo X (segundas-feiras + último)
-  ga4ShowOnAxis.push(d.getDay() === 1 || i === 89);
+  ga4ShowOnAxis.push(d.getDay() === 1);
 }
 // 90 valores aproximados (new) e (returning) — soma alinhada com 1,2 mil totais
 const newUsers = [3,2,4,3,5,4,3,2,5,4,6,5,4,3,5,4,3,6,5,4,3,5,8,12,18,28,42,68,95,110,82,55,38,24,18,15,12,10,9,11,14,13,10,8,7,9,11,10,8,7,6,8,12,15,18,22,28,35,42,48,52,45,38,30,25,22,18,16,14,17,20,22,25,28,30,32,28,24,22,20,18,16,17,15,16,19,21,18,16,15];
