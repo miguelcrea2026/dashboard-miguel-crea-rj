@@ -862,4 +862,39 @@ if (socialCtx) {
       datasets: [
         { label: 'Instagram', data: igDelta, backgroundColor: '#FF4081', borderRadius: 6, borderSkipped: false },
         { label: 'LinkedIn',  data: liDelta, backgroundColor: '#F2C94C', borderRadius: 6, borderSkipped: false },
-        { label: 'TikTok',    data: ttDelta, backgroundColor: '#FFFFFF', borderRadius: 6
+        { label: 'TikTok',    data: ttDelta, backgroundColor: '#FFFFFF', borderRadius: 6, borderSkipped: false },
+        { label: 'Facebook',  data: fbDelta, backgroundColor: '#1877F2', borderRadius: 6, borderSkipped: false }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      layout: { padding: { top: 24 } },
+      plugins: {
+        legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } },
+        tooltip: {
+          mode: 'index', intersect: false,
+          callbacks: {
+            label: function(ctx) {
+              const v = ctx.parsed.y;
+              const sign = v > 0 ? '+' : '';
+              return ctx.dataset.label + ': ' + sign + v + ' seguidores';
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 }, callback: function(v) { return (v > 0 ? '+' : '') + v; } },
+          beginAtZero: true,
+          title: { display: true, text: 'Novos seguidores', color: 'rgba(255,255,255,0.55)', font: { size: 11 } }
+        },
+        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.85)', font: { size: 12, weight: 600 } } }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
