@@ -391,27 +391,27 @@ body.locked > *:not(#pwGate) { display: none !important; }
 
 <!-- ============== EVENTO DE CAMPANHA · 15/06/2026 ============== -->
 <div class="event-section">
-  <div class="event-badge">🎉 Evento de Campanha · 15/06/2026</div>
+  <div class="event-badge">🎉 Evento de Campanha · 15/06/2026 · confirmados atualizados <span id="confUpd">--</span></div>
   <div class="event-grid">
     <div class="event-hero">
       <div class="event-hero-label">Total de confirmados</div>
-      <div class="event-hero-value">331</div>
+      <div class="event-hero-value" id="confTotal">331</div>
       <div class="event-hero-sub">⏳ faltam <span id="cdEventoHero">7</span> dias para o evento</div>
     </div>
     <div class="event-cards">
       <div class="event-card whatsapp">
         <div class="event-card-label">✅ Confirmados WhatsApp</div>
-        <div class="event-card-value">157</div>
-        <div class="event-card-sub">Unnichat · inclui os 59 que também confirmaram no PDF</div>
+        <div class="event-card-value" id="confWhats">157</div>
+        <div class="event-card-sub">Unnichat · inclui os <span id="confAmbosTxt">59</span> que também confirmaram no PDF</div>
       </div>
       <div class="event-card pdf">
         <div class="event-card-label">📄 Confirmados convite PDF</div>
-        <div class="event-card-value">174</div>
+        <div class="event-card-value" id="confPdf">174</div>
         <div class="event-card-sub">formulário/planilha · únicos (já sem duplicar WhatsApp)</div>
       </div>
       <div class="event-card both">
         <div class="event-card-label">🔁 Nos dois canais</div>
-        <div class="event-card-value">59</div>
+        <div class="event-card-value" id="confAmbos">59</div>
         <div class="event-card-sub">confirmaram no WhatsApp e no PDF</div>
       </div>
     </div>
@@ -421,11 +421,16 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <div class="funnel-arrow">→</div>
     <div class="funnel-step"><div class="funnel-num">161</div><div class="funnel-lbl">Responderam</div></div>
     <div class="funnel-arrow">→</div>
-    <div class="funnel-step"><div class="funnel-num">157</div><div class="funnel-lbl">Confirmaram (WhatsApp)</div></div>
+    <div class="funnel-step"><div class="funnel-num" id="funConfirm">157</div><div class="funnel-lbl">Confirmaram (WhatsApp)</div></div>
     <div class="funnel-arrow">→</div>
     <div class="funnel-step decline"><div class="funnel-num">61</div><div class="funnel-lbl">Não vão</div></div>
   </div>
 </div>
+
+<!-- ============== DADOS CONFIRMADOS (atualizado automaticamente a cada 15 min) ============== -->
+<!-- CONFIRMADOS_DATA_START -->
+<script id="confirmadosData" type="application/json">{"total": 349, "whatsapp": 167, "pdf": 182, "ambos": 71, "updated": "09/06 11:52"}</script>
+<!-- CONFIRMADOS_DATA_END -->
 
 <!-- ============== BLOCO PRINCIPAL: SITE miguelcrea.com ============== -->
 <div class="site-section">
@@ -545,23 +550,23 @@ body.locked > *:not(#pwGate) { display: none !important; }
       <div class="social-kpis">
         <div class="social-kpi neutral">
           <div class="social-kpi-label">Seguidores totais</div>
-          <div class="social-kpi-value">18.889</div>
-          <span class="social-kpi-trend trend-neutral">IG 7.056 · LI 7.094 · TT 4.651 · FB 88</span>
+          <div class="social-kpi-value">18.940</div>
+          <span class="social-kpi-trend trend-neutral">IG 7.061 · LI 7.099 · TT 4.692 · FB 88</span>
         </div>
         <div class="social-kpi gold">
           <div class="social-kpi-label">Engaj. postagens (7d)</div>
-          <div class="social-kpi-value">2.397</div>
-          <span class="social-kpi-trend trend-up">↑ +52,58% vs 1.571</span>
+          <div class="social-kpi-value">2.799</div>
+          <span class="social-kpi-trend trend-up">↑ +78,17% vs 1.571</span>
         </div>
         <div class="social-kpi green">
           <div class="social-kpi-label">Alcance total (7d)</div>
-          <div class="social-kpi-value">276.262</div>
-          <span class="social-kpi-trend trend-down">↓ -4,27% vs 288.579 · contas consolidadas</span>
+          <div class="social-kpi-value">299.910</div>
+          <span class="social-kpi-trend trend-up">↑ +3,93% vs 288.579 · contas consolidadas</span>
         </div>
         <div class="social-kpi">
           <div class="social-kpi-label">Postagens (7d)</div>
-          <div class="social-kpi-value">8</div>
-          <span class="social-kpi-trend trend-up">↑ +300% vs 2</span>
+          <div class="social-kpi-value">9</div>
+          <span class="social-kpi-trend trend-up">↑ +350% vs 2</span>
         </div>
       </div>
 
@@ -582,29 +587,29 @@ body.locked > *:not(#pwGate) { display: none !important; }
             <div class="social-network-badge bg-ig">IG</div>
             <div class="social-network-name">Instagram</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>7.056</span></div>
-          <div class="social-network-row"><span>Alcance 30d</span><span>326,1K</span></div>
-          <div class="social-network-row"><span>Views 7d</span><span>271,8K</span></div>
-          <div class="social-network-row"><span>Interações 7d</span><span>2.155</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.061</span></div>
+          <div class="social-network-row"><span>Alcance 30d</span><span>330,8K</span></div>
+          <div class="social-network-row"><span>Views 7d</span><span>300,5K</span></div>
+          <div class="social-network-row"><span>Interações 7d</span><span>2.436</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
             <div class="social-network-badge bg-li">in</div>
             <div class="social-network-name">LinkedIn</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>7.094</span></div>
-          <div class="social-network-row"><span>Impressões 7d</span><span>1.783</span></div>
-          <div class="social-network-row"><span>Engaj. 7d</span><span>93</span></div>
-          <div class="social-network-row"><span>Membros 7d</span><span>838</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.099</span></div>
+          <div class="social-network-row"><span>Impressões 7d</span><span>2.025</span></div>
+          <div class="social-network-row"><span>Engaj. 7d</span><span>101</span></div>
+          <div class="social-network-row"><span>Membros 7d</span><span>900</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
             <div class="social-network-badge bg-tt">TT</div>
             <div class="social-network-name">TikTok</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>4.651</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>4.692</span></div>
           <div class="social-network-row"><span>Vídeos 7d</span><span>3</span></div>
-          <div class="social-network-row"><span>Views 7d</span><span>895</span></div>
+          <div class="social-network-row"><span>Views 7d</span><span>898</span></div>
           <div class="social-network-row"><span>Curtidas 7d</span><span>14</span></div>
         </div>
         <div class="social-network">
@@ -627,33 +632,33 @@ body.locked > *:not(#pwGate) { display: none !important; }
         <div class="alerts-list">
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">IG Alcance orgânico 30d: 34.543 (+76,45%)</div>
-            <div class="alert-meta">vs 19.577 · alcance orgânico do Instagram disparou · capitalizar conteúdo do evento 15/06</div>
+            <div class="alert-title">Engaj. postagens 7d: 2.799 (+78,17%)</div>
+            <div class="alert-meta">vs 1.571 · engajamento consolidado em forte alta · semana de pico pré-evento 15/06</div>
           </div>
           <div class="alert alto">
             <span class="alert-prio">Alto</span>
-            <div class="alert-title">Engaj. postagens 7d: 2.397 (+52,58%)</div>
-            <div class="alert-meta">vs 1.571 · engajamento consolidado em forte alta · semana de pico pré-evento 15/06</div>
+            <div class="alert-title">Postagens 7d: 9 (+350%)</div>
+            <div class="alert-meta">vs 2 · ritmo de publicação acelerou na reta final do evento 15/06</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">TikTok retoma: Views 895 · Vídeos 3 · Curtidas 14</div>
-            <div class="alert-meta">vs ~0 na semana anterior · produção retomada · manter cadência de 3 vídeos/semana</div>
+            <div class="alert-title">LI Engaj. 7d: 101 (+71,19%) · Reações 95 (+63,79%)</div>
+            <div class="alert-meta">vs 59 / 58 · LinkedIn segue em recuperação · manter posts institucionais · Impressões 2.025 (+22,43%)</div>
           </div>
           <div class="alert medio">
             <span class="alert-prio">Médio</span>
-            <div class="alert-title">Postagens 7d: 8 (+300%)</div>
-            <div class="alert-meta">vs 2 · ritmo de publicação acelerou na reta do evento</div>
+            <div class="alert-title">TikTok ativo: Views 898 · Vídeos 3 · Curtidas 14</div>
+            <div class="alert-meta">vs ~0 há duas semanas · produção mantida · seguir com cadência de 3 vídeos/semana</div>
           </div>
           <div class="alert baixo">
             <span class="alert-prio">Baixo</span>
-            <div class="alert-title">LI Engaj. 7d: 93 (+57,63%) · Reações 87 (+50%) · Coment. 6 (+500%)</div>
-            <div class="alert-meta">vs 59 / 58 / 1 · LinkedIn em recuperação · seguir com posts institucionais</div>
+            <div class="alert-title">IG Alcance 30d (org+pago): 330,8K (+9,37%) · Interações 2.436 (+13,62%)</div>
+            <div class="alert-meta">vs 302.455 / 2.144 · base estável em alta leve · Novos seguidores consolidados 103 (-11,21% vs 116)</div>
           </div>
           <div class="alert baixo">
             <span class="alert-prio">Baixo</span>
-            <div class="alert-title">🏆 Melhor post: Convite 15/06 (Imagem)</div>
-            <div class="alert-meta">6.441 views · 3.873 alcance · 313 interações · taxa 8,08% · 37 comentários · top Reels: "Modernizar não é só trocar sistema" (11,59%)</div>
+            <div class="alert-title">🏆 Melhor Reel (taxa): "Uma das maiores transformações dos últimos anos" (17,52%)</div>
+            <div class="alert-meta">1.610 views · 982 alcance · 172 interações · 130 curtidas · 23 coment. · 08/06 · maior alcance: "Prometemos. Entregamos." 4.172 views / 6,03% / 06/06</div>
           </div>
         </div>
       </div>
@@ -664,7 +669,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
 <div class="tv-footer">
   <div class="tv-footer-update">
     <span class="tv-update-dot"></span>
-    <span>Reportei + GA4 · Dados atualizados em <strong>08/06/2026 15:17</strong> · Relógio: <strong id="lastUpd">--:--:--</strong></span>
+    <span>Reportei + GA4 · Dados atualizados em <strong>09/06/2026 11:27</strong> · Relógio: <strong id="lastUpd">--:--:--</strong></span>
   </div>
   <div>Central Estratégica Miguel CREA-RJ 2026 · F11 para tela cheia</div>
 </div>
@@ -746,6 +751,24 @@ function updateCountdowns() {
 updateCountdowns();
 setInterval(updateClock, 1000);
 
+// === Confirmados do evento (injetados pela tarefa agendada de 15 min) ===
+function renderConfirmados() {
+  try {
+    var el = document.getElementById('confirmadosData');
+    if (!el) return;
+    var c = JSON.parse(el.textContent);
+    function set(id, v) { var e = document.getElementById(id); if (e && v != null) e.textContent = v; }
+    set('confTotal', c.total);
+    set('confWhats', c.whatsapp);
+    set('confPdf', c.pdf);
+    set('confAmbos', c.ambos);
+    set('confAmbosTxt', c.ambos);
+    set('funConfirm', c.whatsapp);
+    var u = document.getElementById('confUpd'); if (u && c.updated) u.textContent = c.updated;
+  } catch (e) { /* mantém valores estáticos do HTML */ }
+}
+renderConfirmados();
+
 // === GA4 chart: Usuários novos x recorrentes (90 dias) ===
 // Dados reconstruídos do GA4 (Resumo dos relatórios · 05/03 – 03/06/2026)
 // Pontos representativos com picos observados (13–19/abr e 13–15/mai)
@@ -797,9 +820,9 @@ if (ga4Ctx) {
 }
 
 // === Social chart: Crescimento semanal (delta de seguidores) ===
-const igAbs = [6489,6529,6702,6791,6894,6929,7022,7056];
-const liAbs = [6756,6821,6924,6994,7025,7039,7081,7094];
-const ttAbs = [3893,3893,4011,4202,4283,4414,4557,4651];
+const igAbs = [6489,6529,6702,6791,6894,6929,7022,7061];
+const liAbs = [6756,6821,6924,6994,7025,7039,7081,7099];
+const ttAbs = [3893,3893,4011,4202,4283,4414,4557,4692];
 const fbAbs = [88,88,88,88,88,88,87,88];
 function deltas(arr) { return arr.slice(1).map((v, i) => v - arr[i]); }
 const igDelta = deltas(igAbs);
@@ -840,38 +863,4 @@ if (socialCtx) {
         { label: 'Instagram', data: igDelta, backgroundColor: '#FF4081', borderRadius: 6, borderSkipped: false },
         { label: 'LinkedIn',  data: liDelta, backgroundColor: '#F2C94C', borderRadius: 6, borderSkipped: false },
         { label: 'TikTok',    data: ttDelta, backgroundColor: '#FFFFFF', borderRadius: 6, borderSkipped: false },
-        { label: 'Facebook',  data: fbDelta, backgroundColor: '#1877F2', borderRadius: 6, borderSkipped: false }
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      layout: { padding: { top: 24 } },
-      plugins: {
-        legend: { position: 'bottom', labels: { color: 'rgba(255,255,255,0.85)', boxWidth: 12, font: { size: 13 } } },
-        tooltip: {
-          mode: 'index', intersect: false,
-          callbacks: {
-            label: function(ctx) {
-              const v = ctx.parsed.y;
-              const sign = v > 0 ? '+' : '';
-              return ctx.dataset.label + ': ' + sign + v + ' seguidores';
-            }
-          }
-        }
-      },
-      scales: {
-        y: {
-          grid: { color: 'rgba(255,255,255,0.06)' },
-          ticks: { color: 'rgba(255,255,255,0.55)', font: { size: 11 }, callback: function(v) { return (v > 0 ? '+' : '') + v; } },
-          beginAtZero: true,
-          title: { display: true, text: 'Novos seguidores', color: 'rgba(255,255,255,0.55)', font: { size: 11 } }
-        },
-        x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.85)', font: { size: 12, weight: 600 } } }
-      }
-    }
-  });
-}
-</script>
-</body>
-</html>
+        { label: 'Facebook',  data: fbDelta, backgroundColor: '#1877
