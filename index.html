@@ -437,30 +437,30 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <div class="site-badge">🌐 Foco · Site</div>
   <div class="site-title-row" style="margin-top: 6px;">
     <div class="site-title">miguelcrea.com · Google Analytics 4</div>
-    <div class="site-period">Últimos 90 dias · 10/03 – 07/06/2026</div>
+    <div class="site-period">Últimos 90 dias · 12/03 – 10/06/2026</div>
   </div>
 
   <!-- KPIs SITE -->
   <div class="site-kpis">
     <div class="site-kpi">
       <div class="site-kpi-label">Usuários ativos</div>
-      <div class="site-kpi-value">1,5 mil</div>
-      <div class="site-kpi-sub">Estável vs 05/06 · janela 90d (10/03–07/06)</div>
+      <div class="site-kpi-value">1,6 mil</div>
+      <div class="site-kpi-sub">Subiu de 1,5 mil · janela 90d (12/03–10/06)</div>
     </div>
     <div class="site-kpi green">
       <div class="site-kpi-label">Novos usuários</div>
       <div class="site-kpi-value">1,5 mil</div>
-      <div class="site-kpi-sub">Estável em 1,5 mil vs 05/06</div>
+      <div class="site-kpi-sub">Estável em 1,5 mil vs 09/06</div>
     </div>
     <div class="site-kpi blue">
       <div class="site-kpi-label">Tempo médio engaj./usuário</div>
-      <div class="site-kpi-value">1 min 01 s</div>
-      <div class="site-kpi-sub">Praticamente estável (era 1 min 02 s)</div>
+      <div class="site-kpi-value">1 min 00 s</div>
+      <div class="site-kpi-sub">Praticamente estável (era 1 min 01 s)</div>
     </div>
     <div class="site-kpi gold">
       <div class="site-kpi-label">Contagem de eventos</div>
       <div class="site-kpi-value">11 mil</div>
-      <div class="site-kpi-sub">Estável em 11 mil vs 05/06</div>
+      <div class="site-kpi-sub">Estável em ~11 mil vs 09/06</div>
     </div>
   </div>
 
@@ -775,7 +775,7 @@ renderConfirmados();
 const ga4Labels = [];
 const ga4ShowOnAxis = [];
 const meses3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-const startDate = new Date(2026, 2, 10); // 10/03/2026 (janela GA4 últimos 90 dias: 10/03–07/06)
+const startDate = new Date(2026, 2, 12); // 12/03/2026 (janela GA4 últimos 90 dias: 12/03–10/06)
 for (let i = 0; i < 90; i++) {
   const d = new Date(startDate); d.setDate(startDate.getDate() + i);
   // Label completo (para tooltip): "07/04 (ter)"
