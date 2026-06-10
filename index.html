@@ -417,7 +417,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
     </div>
   </div>
   <div class="event-funnel">
-    <div class="funnel-step"><div class="funnel-num">680</div><div class="funnel-lbl">Convites enviados</div></div>
+    <div class="funnel-step"><div class="funnel-num" id="funEnviados">1.180</div><div class="funnel-lbl">Convites enviados</div></div>
     <div class="funnel-arrow">→</div>
     <div class="funnel-step"><div class="funnel-num">161</div><div class="funnel-lbl">Responderam</div></div>
     <div class="funnel-arrow">→</div>
@@ -431,6 +431,9 @@ body.locked > *:not(#pwGate) { display: none !important; }
 <!-- CONFIRMADOS_DATA_START -->
 <script id="confirmadosData" type="application/json">{"total": 370, "whatsapp": 167, "pdf": 203, "ambos": 72, "updated": "10/06 14:07"}</script>
 <!-- CONFIRMADOS_DATA_END -->
+<!-- ENVIADOS_DATA_START -->
+<script id="enviadosData" type="application/json">{"enviados":"1.180","updated":"10/06"}</script>
+<!-- ENVIADOS_DATA_END -->
 
 <!-- ============== BLOCO PRINCIPAL: SITE miguelcrea.com ============== -->
 <div class="site-section">
@@ -765,6 +768,7 @@ function renderConfirmados() {
     set('confAmbosTxt', c.ambos);
     set('funConfirm', c.whatsapp);
     var u = document.getElementById('confUpd'); if (u && c.updated) u.textContent = c.updated;
+    var ed = document.getElementById('enviadosData'); if (ed) { var e2 = JSON.parse(ed.textContent); set('funEnviados', e2.enviados); }
   } catch (e) { /* mantém valores estáticos do HTML */ }
 }
 renderConfirmados();
