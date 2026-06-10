@@ -550,8 +550,8 @@ body.locked > *:not(#pwGate) { display: none !important; }
       <div class="social-kpis">
         <div class="social-kpi neutral">
           <div class="social-kpi-label">Seguidores totais</div>
-          <div class="social-kpi-value">18.948</div>
-          <span class="social-kpi-trend trend-neutral">IG 7.066 · LI 7.100 · TT 4.693 · FB 89</span>
+          <div class="social-kpi-value">19.004</div>
+          <span class="social-kpi-trend trend-neutral">IG 7.077 · LI 7.145 · TT 4.693 · FB 89</span>
         </div>
         <div class="social-kpi gold">
           <div class="social-kpi-label">Engaj. postagens (7d)</div>
@@ -587,7 +587,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
             <div class="social-network-badge bg-ig">IG</div>
             <div class="social-network-name">Instagram</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>7.066</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.077</span></div>
           <div class="social-network-row"><span>Alcance 30d</span><span>327,1K</span></div>
           <div class="social-network-row"><span>Views 7d</span><span>267,5K</span></div>
           <div class="social-network-row"><span>Interações 7d</span><span>2.364</span></div>
@@ -597,7 +597,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
             <div class="social-network-badge bg-li">in</div>
             <div class="social-network-name">LinkedIn</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>7.100</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.145</span></div>
           <div class="social-network-row"><span>Impressões 7d</span><span>2.205</span></div>
           <div class="social-network-row"><span>Engaj. 7d</span><span>119</span></div>
           <div class="social-network-row"><span>Membros 7d</span><span>947</span></div>
@@ -669,7 +669,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
 <div class="tv-footer">
   <div class="tv-footer-update">
     <span class="tv-update-dot"></span>
-    <span>Reportei + GA4 · Dados atualizados em <strong>09/06/2026 16:15</strong> · Relógio: <strong id="lastUpd">--:--:--</strong></span>
+    <span>Reportei + GA4 · Dados atualizados em <strong>10/06/2026 12:58</strong> · Relógio: <strong id="lastUpd">--:--:--</strong></span>
   </div>
   <div>Central Estratégica Miguel CREA-RJ 2026 · F11 para tela cheia</div>
 </div>
@@ -820,16 +820,16 @@ if (ga4Ctx) {
 }
 
 // === Social chart: Crescimento semanal (delta de seguidores) ===
-const igAbs = [6489,6529,6702,6791,6894,6929,7022,7066];
-const liAbs = [6756,6821,6924,6994,7025,7039,7081,7100];
-const ttAbs = [3893,3893,4011,4202,4283,4414,4557,4693];
-const fbAbs = [88,88,88,88,88,88,87,89];
+const igAbs = [6489,6529,6702,6791,6894,6929,7022,7066,7077];
+const liAbs = [6756,6821,6924,6994,7025,7039,7081,7100,7145];
+const ttAbs = [3893,3893,4011,4202,4283,4414,4557,4693,4693];
+const fbAbs = [88,88,88,88,88,88,87,89,89];
 function deltas(arr) { return arr.slice(1).map((v, i) => v - arr[i]); }
 const igDelta = deltas(igAbs);
 const liDelta = deltas(liAbs);
 const ttDelta = deltas(ttAbs);
 const fbDelta = deltas(fbAbs);
-const deltaLabels = ['22–28/04','29/04–05/05','06–12/05','13–19/05','20–26/05','27/05–02/06','03–09/06'];
+const deltaLabels = ['22–28/04','29/04–05/05','06–12/05','13–19/05','20–26/05','27/05–02/06','03–09/06','10–16/06'];
 
 const valueOnBarPlugin = {
   id: 'valueOnBar',
