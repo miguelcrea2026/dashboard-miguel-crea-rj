@@ -413,7 +413,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
 
 <!-- ============== DADOS CONFIRMADOS (atualizado automaticamente a cada 15 min) ============== -->
 <!-- CONFIRMADOS_DATA_START -->
-<script id="confirmadosData" type="application/json">{"total": 531, "whatsapp": 172, "pdf": 359, "ambos": 86, "updated": "15/06 15:40"}</script>
+<script id="confirmadosData" type="application/json">{"total": 616, "whatsapp": 172, "pdf": 444, "ambos": 90, "updated": "19/06 11:19"}</script>
 <!-- CONFIRMADOS_DATA_END -->
 <!-- ENVIADOS_DATA_START -->
 <script id="enviadosData" type="application/json">{"enviados": "3.865", "updated": "15/06 10:09"}</script>
@@ -424,7 +424,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <div class="site-badge">🌐 Foco · Site</div>
   <div class="site-title-row" style="margin-top: 6px;">
     <div class="site-title">miguelcrea.com · Google Analytics 4</div>
-    <div class="site-period">Últimos 90 dias · 21/03 – 19/06/2026</div>
+    <div class="site-period">Últimos 90 dias · 22/03 – 19/06/2026</div>
   </div>
 
   <!-- KPIs SITE -->
@@ -432,7 +432,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <div class="site-kpi">
       <div class="site-kpi-label">Usuários ativos</div>
       <div class="site-kpi-value">2,4 mil</div>
-      <div class="site-kpi-sub">Subiu para 2,4 mil · janela 90d (21/03–19/06)</div>
+      <div class="site-kpi-sub">Subiu para 2,4 mil · janela 90d (22/03–19/06)</div>
     </div>
     <div class="site-kpi green">
       <div class="site-kpi-label">Novos usuários</div>
@@ -763,7 +763,7 @@ renderConfirmados();
 const ga4Labels = [];
 const ga4ShowOnAxis = [];
 const meses3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-const startDate = new Date(2026, 2, 12); // 12/03/2026 (janela GA4 últimos 90 dias: 12/03–10/06)
+const startDate = new Date(2026, 2, 22); // 22/03/2026 (janela GA4 últimos 90 dias termina em 19/06; 90 pontos)
 for (let i = 0; i < 90; i++) {
   const d = new Date(startDate); d.setDate(startDate.getDate() + i);
   // Label completo (para tooltip): "07/04 (ter)"
