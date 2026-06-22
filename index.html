@@ -764,7 +764,7 @@ const ga4Labels = [];
 const ga4ShowOnAxis = [];
 const meses3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
 const startDate = new Date(2026, 2, 22); // 22/03/2026 (janela GA4 últimos 90 dias termina em 19/06; 90 pontos)
-for (let i = 0; i < newUsers.length; i++) {
+for (let i = 0; i < 93; i++) {
   const d = new Date(startDate); d.setDate(startDate.getDate() + i);
   // Label completo (para tooltip): "07/04 (ter)"
   const diasSemana = ['dom','seg','ter','qua','qui','sex','sáb'];
