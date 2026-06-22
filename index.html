@@ -424,7 +424,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <div class="site-badge">🌐 Foco · Site</div>
   <div class="site-title-row" style="margin-top: 6px;">
     <div class="site-title">miguelcrea.com · Google Analytics 4</div>
-    <div class="site-period">Últimos 90 dias · 22/03 – 19/06/2026</div>
+    <div class="site-period">Últimos 90 dias · 22/03 – 22/06/2026</div>
   </div>
 
   <!-- KPIs SITE -->
@@ -574,10 +574,10 @@ body.locked > *:not(#pwGate) { display: none !important; }
             <div class="social-network-badge bg-ig">IG</div>
             <div class="social-network-name">Instagram</div>
           </div>
-          <div class="social-network-row"><span>Seguidores</span><span>7.258</span></div>
-          <div class="social-network-row"><span>Alcance 30d</span><span>394,3K</span></div>
-          <div class="social-network-row"><span>Views 7d</span><span>524,4K</span></div>
-          <div class="social-network-row"><span>Interações 7d</span><span>5.871</span></div>
+          <div class="social-network-row"><span>Seguidores</span><span>7.301</span></div>
+          <div class="social-network-row"><span>Alcance 30d</span><span>424,9K</span></div>
+          <div class="social-network-row"><span>Views 7d</span><span>540,2K</span></div>
+          <div class="social-network-row"><span>Interações 7d</span><span>6.658</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
@@ -595,9 +595,9 @@ body.locked > *:not(#pwGate) { display: none !important; }
             <div class="social-network-name">TikTok</div>
           </div>
           <div class="social-network-row"><span>Seguidores</span><span>5.064</span></div>
-          <div class="social-network-row"><span>Vídeos 7d</span><span>4</span></div>
-          <div class="social-network-row"><span>Views 7d</span><span>825</span></div>
-          <div class="social-network-row"><span>Curtidas 7d</span><span>18</span></div>
+          <div class="social-network-row"><span>Vídeos 7d</span><span>13</span></div>
+          <div class="social-network-row"><span>Views 7d</span><span>2.308</span></div>
+          <div class="social-network-row"><span>Curtidas 7d</span><span>38</span></div>
         </div>
         <div class="social-network">
           <div class="social-network-header">
@@ -764,7 +764,7 @@ const ga4Labels = [];
 const ga4ShowOnAxis = [];
 const meses3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
 const startDate = new Date(2026, 2, 22); // 22/03/2026 (janela GA4 últimos 90 dias termina em 19/06; 90 pontos)
-for (let i = 0; i < 90; i++) {
+for (let i = 0; i < newUsers.length; i++) {
   const d = new Date(startDate); d.setDate(startDate.getDate() + i);
   // Label completo (para tooltip): "07/04 (ter)"
   const diasSemana = ['dom','seg','ter','qua','qui','sex','sáb'];
@@ -773,8 +773,8 @@ for (let i = 0; i < 90; i++) {
   ga4ShowOnAxis.push(d.getDay() === 1);
 }
 // 90 valores aproximados (new) e (returning) — soma alinhada com 1,2 mil totais
-const newUsers = [5,5,5,5,6,6,6,6,6,6,6,7,7,7,8,8,8,8,8,9,9,9,10,10,10,11,11,12,110,100,72,45,44,42,41,39,38,36,35,35,36,36,37,37,38,38,38,39,39,40,40,65,90,69,48,47,45,44,43,41,40,40,40,41,41,41,42,42,42,42,43,43,44,44,45,45,65,85,74,62,60,57,55,62,70,95,420,150,48,30];
-const retUsers  = [2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,5,5,5,5,5,6,6,26,22,16,11,11,10,10,9,9,8,8,8,8,8,9,9,9,9,9,9,9,9,9,14,18,14,11,11,10,10,10,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,14,18,16,13,12,12,11,12,14,20,55,32,13,9];
+const newUsers = [5,5,5,5,6,6,6,6,6,6,6,7,7,7,8,8,8,8,8,9,9,9,10,10,10,11,11,12,110,100,72,45,44,42,41,39,38,36,35,35,36,36,37,37,38,38,38,39,39,40,40,65,90,69,48,47,45,44,43,41,40,40,40,41,41,41,42,42,42,42,43,43,44,44,45,45,65,85,74,62,60,57,55,62,70,95,420,150,48,30,34,30,27];
+const retUsers  = [2,2,2,2,2,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,5,5,5,5,5,6,6,26,22,16,11,11,10,10,9,9,8,8,8,8,8,9,9,9,9,9,9,9,9,9,14,18,14,11,11,10,10,10,9,9,9,9,9,10,10,10,10,10,10,10,10,10,10,10,10,14,18,16,13,12,12,11,12,14,20,55,32,13,9,12,11,10];
 
 const ga4Ctx = document.getElementById('ga4Chart');
 if (ga4Ctx) {
@@ -808,7 +808,7 @@ if (ga4Ctx) {
 }
 
 // === Social chart: Crescimento semanal (delta de seguidores) ===
-const igAbs = [6489,6529,6702,6791,6894,6929,7022,7066,7258,7258];
+const igAbs = [6489,6529,6702,6791,6894,6929,7022,7066,7258,7301];
 const liAbs = [6756,6821,6924,6994,7025,7039,7081,7100,7298,7298];
 const ttAbs = [3893,3893,4011,4202,4283,4414,4557,4693,4898,5064];
 const fbAbs = [88,88,88,88,88,88,87,89,90,90];
@@ -817,7 +817,7 @@ const igDelta = deltas(igAbs);
 const liDelta = deltas(liAbs);
 const ttDelta = deltas(ttAbs);
 const fbDelta = deltas(fbAbs);
-const deltaLabels = ['22–28/04','29/04–05/05','06–12/05','13–19/05','20–26/05','27/05–02/06','03–09/06','10–16/06','17–19/06'];
+const deltaLabels = ['22–28/04','29/04–05/05','06–12/05','13–19/05','20–26/05','27/05–02/06','03–09/06','10–16/06','17–22/06'];
 
 const valueOnBarPlugin = {
   id: 'valueOnBar',
