@@ -424,30 +424,30 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <div class="site-badge">🌐 Foco · Site</div>
   <div class="site-title-row" style="margin-top: 6px;">
     <div class="site-title">miguelcrea.com · Google Analytics 4</div>
-    <div class="site-period">Últimos 90 dias · 23/03 – 23/06/2026</div>
+    <div class="site-period">Últimos 90 dias · 24/03 – 22/06/2026</div>
   </div>
 
   <!-- KPIs SITE -->
   <div class="site-kpis">
     <div class="site-kpi">
       <div class="site-kpi-label">Usuários ativos</div>
-      <div class="site-kpi-value">2,4 mil</div>
-      <div class="site-kpi-sub">Subiu para 2,4 mil · janela 90d (22/03–19/06)</div>
+      <div class="site-kpi-value">2,6 mil</div>
+      <div class="site-kpi-sub">Subiu para 2,6 mil · janela 90d (24/03–22/06)</div>
     </div>
     <div class="site-kpi green">
       <div class="site-kpi-label">Novos usuários</div>
-      <div class="site-kpi-value">2,4 mil</div>
-      <div class="site-kpi-sub">Subiu para 2,4 mil na janela 90d</div>
+      <div class="site-kpi-value">2,7 mil</div>
+      <div class="site-kpi-sub">Subiu para 2,7 mil na janela 90d</div>
     </div>
     <div class="site-kpi blue">
       <div class="site-kpi-label">Tempo médio engaj./usuário</div>
-      <div class="site-kpi-value">48 s</div>
-      <div class="site-kpi-sub">48 s por usuário na janela 90d</div>
+      <div class="site-kpi-value">46 s</div>
+      <div class="site-kpi-sub">46 s por usuário na janela 90d</div>
     </div>
     <div class="site-kpi gold">
       <div class="site-kpi-label">Contagem de eventos</div>
-      <div class="site-kpi-value">15 mil</div>
-      <div class="site-kpi-sub">Subiu para ~15 mil na janela 90d</div>
+      <div class="site-kpi-value">16 mil</div>
+      <div class="site-kpi-sub">Subiu para ~16 mil na janela 90d</div>
     </div>
   </div>
 
@@ -808,16 +808,16 @@ if (ga4Ctx) {
 }
 
 // === Social chart: Crescimento semanal (delta de seguidores) ===
-const igAbs = [6489,6529,6702,6791,6894,6929,7022,7066,7258,7301];
-const liAbs = [6756,6821,6924,6994,7025,7039,7081,7100,7298,7298];
-const ttAbs = [3893,3893,4011,4202,4283,4414,4557,4693,4898,5064];
-const fbAbs = [88,88,88,88,88,88,87,89,90,90];
+const igAbs = [6489,6529,6702,6791,6894,6929,7022,7066,7258,7301,7308];
+const liAbs = [6756,6821,6924,6994,7025,7039,7081,7100,7298,7298,7298];
+const ttAbs = [3893,3893,4011,4202,4283,4414,4557,4693,4898,5064,5073];
+const fbAbs = [88,88,88,88,88,88,87,89,90,90,90];
 function deltas(arr) { return arr.slice(1).map((v, i) => v - arr[i]); }
 const igDelta = deltas(igAbs);
 const liDelta = deltas(liAbs);
 const ttDelta = deltas(ttAbs);
 const fbDelta = deltas(fbAbs);
-const deltaLabels = ['22–28/04','29/04–05/05','06–12/05','13–19/05','20–26/05','27/05–02/06','03–09/06','10–16/06','17–22/06'];
+const deltaLabels = ['22–28/04','29/04–05/05','06–12/05','13–19/05','20–26/05','27/05–02/06','03–09/06','10–16/06','17–22/06','23–29/06'];
 
 const valueOnBarPlugin = {
   id: 'valueOnBar',
@@ -885,6 +885,7 @@ if (socialCtx) {
         x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.85)', font: { size: 12, weight: 600 } } }
       }
     }
+  }
   });
 }
 </script>
