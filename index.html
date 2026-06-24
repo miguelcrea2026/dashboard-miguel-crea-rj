@@ -374,7 +374,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <div class="tv-brand-text">
       <h1>MIGUEL FERNÁNDEZ · CREA-RJ 2026</h1>
       <p>Central de Monitoramento Digital · Foco no Site + Redes</p>
-      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> (faltam <strong><span id="cdEleicao">17</span> dias</strong>) · GA4 90d (23/mar–23/jun)</div>
+      <div class="tv-election">🗓 Eleição <strong>03/07/2026</strong> (faltam <strong><span id="cdEleicao">17</span> dias</strong>) · GA4 90d (24/mar–24/jun)</div>
     </div>
   </div>
   <div class="tv-status">
@@ -424,7 +424,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
   <div class="site-badge">🌐 Foco · Site</div>
   <div class="site-title-row" style="margin-top: 6px;">
     <div class="site-title">miguelcrea.com · Google Analytics 4</div>
-    <div class="site-period">Últimos 90 dias · 26/03 – 24/06/2026</div>
+    <div class="site-period">Últimos 90 dias · 24/03 – 24/06/2026</div>
   </div>
 
   <!-- KPIs SITE -->
@@ -432,7 +432,7 @@ body.locked > *:not(#pwGate) { display: none !important; }
     <div class="site-kpi">
       <div class="site-kpi-label">Usuários ativos</div>
       <div class="site-kpi-value">3,4 mil</div>
-      <div class="site-kpi-sub">Subiu para 3,4 mil · janela 90d (26/03–24/06)</div>
+      <div class="site-kpi-sub">Subiu para 3,4 mil · janela 90d (24/03–24/06)</div>
     </div>
     <div class="site-kpi green">
       <div class="site-kpi-label">Novos usuários</div>
@@ -763,7 +763,7 @@ renderConfirmados();
 const ga4Labels = [];
 const ga4ShowOnAxis = [];
 const meses3 = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-const startDate = new Date(2026, 2, 23); // 23/03/2026 (janela GA4 90 dias termina em 23/06; 93 pontos)
+const startDate = new Date(2026, 2, 24); // 23/03/2026 (janela GA4 90 dias termina em 23/06; 93 pontos)
 for (let i = 0; i < 93; i++) {
   const d = new Date(startDate); d.setDate(startDate.getDate() + i);
   // Label completo (para tooltip): "07/04 (ter)"
